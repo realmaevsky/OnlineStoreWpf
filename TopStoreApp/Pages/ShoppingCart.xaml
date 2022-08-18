@@ -1,0 +1,295 @@
+﻿<Page x:Class="TopStoreApp.Pages.ShoppingCart"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TopStoreApp.Pages" 
+      xmlns:uc="clr-namespace:TopStoreApp.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="1080"
+      Title="ShoppingCart">
+    <Page.Resources>
+        <Style x:Key="buttonCounter" TargetType="Button">
+            <Setter Property="Background" Value="#878382" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="Height" Value="20" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="50" Padding="5">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#606060" />
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#303030" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="icon" TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#d0d0d0" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="0 5 0 5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border x:Name="border" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="#e9e9e9" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#F1C40F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="buttonDelete" TargetType="Button">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="#ECF0F1" BorderThickness="0" Padding="5">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="buttonCheckout" TargetType="Button">
+            <Setter Property="Background" Value="#F1C40F" />
+            <Setter Property="Foreground" Value="#262729" />
+            <Setter Property="Height" Value="70" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#d1aa0a" />
+                    <Setter Property="Foreground" Value="#111111" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="titleText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#e9e9e9" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="buttonBack" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" Padding="12 7" CornerRadius="3">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e0e0e0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="buttonClose" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="buttonMini" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#666666" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Background="#444444" Panel.ZIndex="1" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
+                <Button Style="{StaticResource buttonClose}">
+                    <Image Width="20" Source="/Images/close.png" Margin="2 0 0 0"/>
+                </Button>
+                <Button Style="{StaticResource buttonMini}" Margin="5 0 0 0">
+                    <Image Width="17" Source="/Images/mini.png" VerticalAlignment="Bottom"/>
+                </Button>
+            </StackPanel>-->
+
+            <Grid Background="Transparent" Margin="0,10,0,0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 30">
+                    <TextBlock Text="TOP STORE" Foreground="{StaticResource FirstTextColor}" FontSize="28" FontWeight="SemiBold" FontFamily="Candara Light" VerticalAlignment="Center" Margin="50 0 0 0"/>
+                    <Rectangle VerticalAlignment="Stretch" Fill="{StaticResource FirstTextColor}" Width="0.7" Margin="20 5 20 5"/>
+                    <TextBlock Text="Кошик" Foreground="{StaticResource FirstTextColor}" FontSize="26" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+
+                    <uc:Item Source="/Images/p4.png" Title="Beni T-Shirt" Ref="Ref. 007197660" Color="Black" Count="1" Price="75.00  грн."/>
+                    <uc:Item Source="/Images/p3.png" Title="Patizen Socks" Ref="Ref. 001289258" Color="Cream" Count="3" Price="10.00  грн."/>
+                    <uc:Item Source="/Images/p2.png" Title="Matric Shoes" Ref="Ref. 006542123" Color="Green" Count="1" Price="90.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Cheter Gloves" Ref="Ref. 002322111" Color="Black" Count="2" Price="20.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 009687963" Color="Blue" Count="4" Price="15.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 002122666" Color="Blue" Count="1" Price="68.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 001110475" Color="Blue" Count="1" Price="13.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 003637100" Color="Blue" Count="1" Price="63.00  грн."/>
+                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 007175420" Color="Blue" Count="1" Price="42.00  грн."/>
+
+                </StackPanel>
+
+                <Grid Grid.Row="2" Margin="80 40 150 40">
+                    <Button Name="GoToProductPage" Foreground="{StaticResource FirstTextColor}" Style="{StaticResource buttonBack}" Click="GoToProductPage_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Images/left.png" Width="20" OpacityMask="White"/>
+                            <TextBlock Text="Повернутись до товарів" VerticalAlignment="Center" Margin="15 0 0 0" Width="178"/>
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Text="Загальна сума:" FontSize="16" Foreground="{StaticResource FirstTextColor}"/>
+                        <TextBlock Text="195.00 грн." FontWeight="SemiBold" Foreground="{StaticResource FirstTextColor}" FontSize="16" Margin="30 0 0 0"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1" Background="{StaticResource SideMenuColor}" Opacity="0.5" Margin="0,10,0,0" Grid.RowSpan="2">
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="10" BlurRadius="50"/>
+                </Grid.Effect>
+
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="130" Margin="-30 50 0 0" Background="{StaticResource ThirdColor}" CornerRadius="10 0 0 10" Padding="10 20 5 20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Ellipse Width="8" Height="8" Fill="{StaticResource FirstBackgroundColor}" Grid.Row="0"/>
+                        <Ellipse Width="8" Height="8" Fill="{StaticResource SecondBackgroundColor}" Grid.Row="1"/>
+                        <Ellipse Width="8" Height="8" Fill="{StaticResource FirstBackgroundColor}" Grid.Row="2"/>
+                    </Grid>
+                </Border>
+
+                <StackPanel Margin="50 100 50 0" VerticalAlignment="Top">
+                    <TextBlock Text="Card Details" Foreground="#F1C40F" FontWeight="SemiBold" FontSize="24" Margin="0 0 0 70"/>
+
+                    <TextBlock Text="Select Card Type" Style="{StaticResource titleText}"/>
+                    <Grid Margin="0 15 0 30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Images/mastercard.png" Width="25" Style="{StaticResource icon}"/>
+                        <Image Grid.Column="1" HorizontalAlignment="Center" Source="/Images/visa.png" Width="25" Style="{StaticResource icon}"/>
+                        <Image Grid.Column="2" HorizontalAlignment="Right" Source="/Images/credit.png" Width="25" Style="{StaticResource icon}"/>
+                    </Grid>
+
+                    <TextBlock Text="Card Number" Style="{StaticResource titleText}"/>
+                    <TextBox Margin="0 5 0 30"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Expire Date" Style="{StaticResource titleText}"/>
+                            <TextBox Margin="0 5 0 0"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="30 0 0 0" Width="50">
+                            <TextBlock Text="CVV" Style="{StaticResource titleText}"/>
+                            <TextBox Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <Button Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,545,62,10"/>
+            </Grid>
+
+            <Frame Grid.Row="1"
+                       Name="ffContainer"
+                       Margin="20"
+                       NavigationUIVisibility="Hidden">
+            </Frame>
+        </Grid>
+    </Grid>
+</Page>

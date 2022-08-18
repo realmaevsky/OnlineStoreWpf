@@ -1,0 +1,31 @@
+﻿<Window x:Class="TopStoreApp.StartLoading"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TopStoreApp"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="StartLoading" Height="250" Width="580" WindowStartupLocation="CenterScreen" 
+        Icon="Res/img/logo.png" AllowsTransparency ="true" Background="Transparent"
+        WindowStyle ="None" ResizeMode="NoResize" Opacity="0.9">
+    <Grid>
+        
+        <Border Width="550" CornerRadius="33"  Background="#FF8BB1EA" Margin="15,20,15,15" >
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" Direction="36" ShadowDepth="11" Color="Black"/>
+        </Border.Effect>
+        
+        <ProgressBar Name="loadBar" Height="70" Width="486"
+                     Minimum="0" Maximum="15" Value="0"
+                     Background="Transparent" Foreground="{DynamicResource BackgroundGradient}" 
+                     BorderBrush="Black" BorderThickness="2" VerticalAlignment="Top" Margin="32,122,32,0"/>
+    </Border>
+        
+        <Border>
+            <Image Source="/Res/img/logo.png" Margin="242,31,242,133"/>
+        </Border>
+        
+    </Grid>
+    
+</Window>

@@ -1,0 +1,92 @@
+﻿<Page x:Class="TopStoreApp.Pages.UserSettings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TopStoreApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="1080"
+      Title="UserSettings">
+    <Page.Resources>
+        <Style x:Key="customThBtn" TargetType="{x:Type Button}" >
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource FourthTextColor}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20"
+                            BorderThickness="2" BorderBrush="{DynamicResource FourthTextColor}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource FourthTextColor}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                    <Setter Property="Opacity" Value="0.8"/>
+                    <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+    </Page.Resources>
+    <Grid>
+
+        <Border CornerRadius="30" 
+                Background="{DynamicResource BackgroundGradient}" 
+                    Opacity="0.8"
+                BorderBrush="{DynamicResource pageBrushColor}" 
+                BorderThickness="1">
+            <Border.Effect>
+                <BlurEffect Radius="1"/>
+            </Border.Effect>
+        </Border>
+
+        <Grid>
+            <Label x:Name="labelTheme2"
+                             Content="Зміна стилю:"
+                             FontWeight="Light"
+                             FontSize="36"
+                             HorizontalAlignment="Center"
+                             Foreground="{DynamicResource FirstTextColor}"
+                       HorizontalContentAlignment="Left"
+                             Opacity="0.8"
+                       Margin="0,131,0,427" Width="212"/>
+
+
+            <StackPanel>
+                <Border Background="Transparent"
+                    Height="62" Width="96" CornerRadius="15"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    Margin="0,198,0,0">
+                    <ToggleButton x:Name="Themes" Height="Auto" Width="Auto" IsChecked="False" 
+                              Style="{DynamicResource ToggleButtonStyle}" 
+                              Click="Themes_Click" Margin="25,19,25,19"/>
+                </Border>
+                <!--<Image HorizontalAlignment="Left" Height="42" Margin="460,-52,0,0" VerticalAlignment="Top" Width="43" Source="/Res/img/sun.png"/>
+                <Image HorizontalAlignment="Left" Height="38" Margin="580,-65,0,0" Width="36" Source="/Res/img/moon.png"/>-->
+            </StackPanel>
+
+        </Grid>
+
+        <Grid/>
+
+        <Grid>
+            <Button Name="saveSettingsButton"
+                            Content="Зберегти налаштування" 
+                    Style="{StaticResource customButton}"
+                    Height="46"
+                    FontSize="20"
+                    FontStyle="Italic"
+                    Opacity="0.8" 
+                    Click="saveSettingsButton_Click" Margin="367,500,367,74" />
+        </Grid>
+
+    </Grid>
+</Page>

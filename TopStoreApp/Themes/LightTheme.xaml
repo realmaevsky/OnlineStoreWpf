@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <LinearGradientBrush x:Key="BackgroundGradient">
+        <GradientStop Color="#7be9f6" Offset="0.0"/>
+        <GradientStop Color="#f083da" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="FirstBackgroundColor" Color="#7be9f6"/>
+    <SolidColorBrush x:Key="SecondBackgroundColor" Color="#f083da"/>
+    <SolidColorBrush x:Key="ThirdBackgroundColor" Color="#FF5A1B4C"/>
+    
+    <SolidColorBrush x:Key="ThirdColor" Color="Black"/>
+    <SolidColorBrush x:Key="SideMenuColor" Color="Black" Opacity="0.3"/>
+    <SolidColorBrush x:Key="TranspColor" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="FirstTextColor" Color="White"/>
+    <SolidColorBrush x:Key="SecondTextColor" Color="#FF36373A"/>
+    <SolidColorBrush x:Key="ThirdTextColor" Color="#FF0C1729"/>
+    <SolidColorBrush x:Key="FourthTextColor" Color="#FF171A1D"/>
+
+    <SolidColorBrush x:Key="FirstIconColor" Color="#FF181919"/>
+    <SolidColorBrush x:Key="SecondIconColor" Color="#FF1C2029"/>
+    <SolidColorBrush x:Key="ThirdIconColor" Color="#FF191B1D"/>
+    <SolidColorBrush x:Key="FourthIconColor" Color="#FF171212"/>
+
+    <SolidColorBrush x:Key="adminColor" Color="#F72626"/>
+
+    <SolidColorBrush x:Key="brdrBrushColor" Color="DarkCyan"/>
+    <SolidColorBrush x:Key="pageBrushColor" Color="#FF696161"/>
+
+    <SolidColorBrush x:Key="toggleInColor" Color="#FF181919"/>
+    <SolidColorBrush x:Key="toggleBackColor" Color="#FFC1C7C7"/>
+    <SolidColorBrush x:Key="toggleSecondInColor" Color="#FF27C2D6"/>
+
+</ResourceDictionary>
