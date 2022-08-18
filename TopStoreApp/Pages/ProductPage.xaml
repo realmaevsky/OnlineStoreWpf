@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TopStoreApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
-      Title="Товари">
+      Title="Товари" Background="Transparent"> 
 
     
     <Grid>
@@ -15,9 +15,19 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Border CornerRadius="30"
+            BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1" Grid.RowSpan="8">
+            <Border.Effect>
+                <DropShadowEffect Direction="333" ShadowDepth="3" BlurRadius="5"/>
+            </Border.Effect>
+        </Border>
         <ListView Name="listViewPhones" Grid.Row="1" 
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                  HorizontalContentAlignment="Center">
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  Foreground="{StaticResource FirstTextColor}"
+                  HorizontalContentAlignment="Center" 
+                  Margin="76,29,24,34" 
+                  Background="{x:Null}" 
+                  BorderBrush="Black">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -25,10 +35,10 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="20" Width="400">
+                    <Grid Margin="20" Width="280">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="70"></RowDefinition>
-                            <RowDefinition Height="310"></RowDefinition>
+                            <RowDefinition Height="210"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>

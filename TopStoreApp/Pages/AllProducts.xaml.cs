@@ -17,11 +17,13 @@ using TopStoreApp.Data;
 
 namespace TopStoreApp.Pages
 {
-    public partial class ManagerInfo : Page
+    /// <summary>
+    /// Interaction logic for AllProducts.xaml
+    /// </summary>
+    public partial class AllProducts : Page
     {
         TopStoreDb db;
-
-        public ManagerInfo()
+        public AllProducts()
         {
             InitializeComponent();
         }
@@ -30,38 +32,42 @@ namespace TopStoreApp.Pages
         {
             db = new TopStoreDb();
             db.Managers.Load();
-            AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList();
         }
 
         private void RefreshBD()
         {
-            AllManagersDataGrid.Items.Refresh();
+            ProductsDataGrid.Items.Refresh();
             db.Managers.Load();
-            AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList();
         }
 
-        private void editManager_Click(object sender, RoutedEventArgs e)
+        private void editProduct_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Кнопка не працює...");
             RefreshBD();
         }
 
-        private void deleteManager_Click(object sender, RoutedEventArgs e)
+        private void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Кнопка не працює...");
             RefreshBD();
         }
 
-        private void SortAllManagers_Click(object sender, RoutedEventArgs e)
+        private void SortAllProducts_Click(object sender, RoutedEventArgs e)
         {
-            AllManagersDataGrid.ItemsSource = db.Managers.Local.ToBindingList();
+            ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList();
         }
 
-        private void SortWorkedManagers_Click(object sender, RoutedEventArgs e)
+        private void SortInStockTrue_Click(object sender, RoutedEventArgs e)
         {
-            AllManagersDataGrid.ItemsSource = db.Managers.Local.ToBindingList().Where(mngr => mngr.Online == true);
+            ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList().Where(prod => prod.InStock == true);
         }
 
+        private void SortInStockFalse_Click(object sender, RoutedEventArgs e)
+        {
+            ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList().Where(prod => prod.InStock == false);
+        }
         private void RefreshData_Click(object sender, RoutedEventArgs e)
         {
             RefreshBD();

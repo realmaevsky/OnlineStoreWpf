@@ -18,7 +18,7 @@ namespace TopStoreApp.Data
 
         public bool InStock { get; set; }
 
-        public short Count { get; set; }
+        public string ImageSource { get; set; }
 
         public Order Ordr { get; set; }
     }

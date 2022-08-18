@@ -30,14 +30,14 @@ namespace TopStoreApp.Pages
         {
             db = new TopStoreDb();
             db.AllOrders.Load();
-            usersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
         private void RefreshBD()
         {
-            usersDataGrid.Items.Refresh();
+            AllOrdersDataGrid.Items.Refresh();
             db.AllOrders.Load();
-            usersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
         private void editOrder_Click(object sender, RoutedEventArgs e)
@@ -48,24 +48,28 @@ namespace TopStoreApp.Pages
 
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
-            db.Accounts.Remove((User)usersDataGrid.SelectedItem);
-            db.SaveChanges();
-            MessageBox.Show("Користувач успішно видалений");
+            MessageBox.Show("Кнопка не працює...");
             RefreshBD();
         }
+
         private void SortAllOrders_Click(object sender, RoutedEventArgs e)
         {
-            usersDataGrid.ItemsSource = db.Accounts.Local.ToBindingList();
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
         private void SortInWorkOrders_Click(object sender, RoutedEventArgs e)
         {
-            usersDataGrid.ItemsSource = db.Accounts.Local.ToBindingList().Where(acc => acc.AccessLevel == 1);
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.IsCompleted == false);
         }
 
         private void SortCompletedOrders_Click(object sender, RoutedEventArgs e)
         {
-            usersDataGrid.ItemsSource = db.Accounts.Local.ToBindingList().Where(acc => acc.AccessLevel == 2);
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.IsCompleted == true);
+        }
+
+        private void RefreshData_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshBD();
         }
     }
 }

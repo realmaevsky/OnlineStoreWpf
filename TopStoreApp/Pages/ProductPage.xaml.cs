@@ -29,9 +29,8 @@ namespace TopStoreApp.Pages
             InitializeComponent();
             db = new TopStoreDb();
             db.AllProducts.Load();
-            var prodList = db.AllProducts.Local.ToList();
 
-            listViewPhones.ItemsSource = prodList;
+            listViewPhones.ItemsSource = db.AllProducts.Local.ToList();
 
 
         }

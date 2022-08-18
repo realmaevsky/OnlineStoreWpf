@@ -101,6 +101,9 @@
     <Compile Include="Pages\AllOrdersInfo.xaml.cs">
       <DependentUpon>AllOrdersInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AllProducts.xaml.cs">
+      <DependentUpon>AllProducts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AllOrdersInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AllProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,17 +277,9 @@
     <Resource Include="Res\Posters\X-T30-DSF4322-678x452.jpg" />
     <Resource Include="Res\Posters\xiaomi-pad-5.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Res\Phones\Apple\" />
-    <Folder Include="Res\Phones\Xiaomi\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Res\Posters\xiaomi12.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Res\prof.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Res\img\add.png" />

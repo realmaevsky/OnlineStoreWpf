@@ -225,7 +225,14 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Всі замовлення" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
                            HorizontalAlignment="Left" Foreground="{DynamicResource FirstTextColor}"/>
-
+                
+                <Button Name ="RefreshData" Style="{StaticResource addButton}" Margin="0,24,10,4" Grid.Row="1" Width="81" Click="RefreshData_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <icon:PackIconMaterial Kind="Refresh" VerticalAlignment="Center"
+                                               Width="15" Height="15" Margin="0 1 8 0"/>
+                        <TextBlock Text="Refresh"/>
+                    </StackPanel>
+                </Button>
                 <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
@@ -237,7 +244,7 @@
                             Style="{StaticResource tabButton}" Click="SortCompletedOrders_Click"/>
                 </StackPanel>
 
-                <DataGrid x:Name="usersDataGrid" Style="{DynamicResource DataGridStyle1}" 
+                <DataGrid x:Name="AllOrdersDataGrid" Style="{DynamicResource DataGridStyle1}" 
                             CellStyle="{DynamicResource DataGridCellStyle1}"
                             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
                              RowStyle="{DynamicResource DataGridRowStyle1}" 
@@ -270,10 +277,10 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Повна вартість" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
-                        <DataGridTextColumn Header="Ім'я клієнта" IsReadOnly="True" Width="*" Binding="{Binding ClientName}"/>
-                        <DataGridTextColumn Header="Номер телефону" IsReadOnly="True" Width="*" Binding="{Binding ClientPhone}"/>
-                        <DataGridTextColumn Header="Поштова скринька" IsReadOnly="True" Width="*" Binding="{Binding ClientMail}"/>
-                        <DataGridTextColumn Header="Статус замовлення" IsReadOnly="True" Width="*" Binding="{Binding IsCompleted}"/>
+                        <DataGridTextColumn Header="Client Name" IsReadOnly="True" Width="*" Binding="{Binding ClientMail}"/>
+                        <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding User.PhoneNumber}"/>
+                        <DataGridTextColumn Header="Responsible Manager" IsReadOnly="True" Width="*" Binding="{Binding ResponsibleMngr}"/>
+                        <DataGridTextColumn Header="Is Completed" IsReadOnly="True" Width="*" Binding="{Binding IsCompleted}"/>
                         <DataGridTemplateColumn Header="Дії" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -293,37 +300,6 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-
-                <!--<Border Name="PagesCount" Grid.Row="6" HorizontalAlignment="Right" BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1"
-                        CornerRadius="10" Padding="5" Background="Transparent" Margin="0 10 10 10">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource pagingButton}">
-                            <icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <Button Style="{StaticResource pagingButton}" Content="1"
-                                Background="#7950f2" 
-                                Foreground="White"/>
-                        <Button Style="{StaticResource pagingButton}" Content="2"/>
-                        <Button Style="{StaticResource pagingButton}" Content="3"/>
-
-                        <TextBlock Text="..." Foreground="{DynamicResource ThirdTextColor}" VerticalAlignment="Center" 
-                                   FontSize="15" Margin="10 0"/>
-
-                        <Button Style="{StaticResource pagingButton}" Content="7"/>
-                        <Button Style="{StaticResource pagingButton}" Content="8"/>
-                        <Button Style="{StaticResource pagingButton}" Content="9"/>
-
-                        <Rectangle Width="1" Fill="#dee4ec" Margin="3 7"/>
-
-                        <Button Style="{StaticResource pagingButton}">
-                            <icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                        </Button>
-                    </StackPanel>
-
-                </Border>-->
             </Grid>
         </Grid>
     </Border>

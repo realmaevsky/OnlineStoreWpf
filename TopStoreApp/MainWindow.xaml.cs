@@ -25,43 +25,10 @@ namespace TopStoreApp
         TopStoreDb db;
         public MainWindow()
         {
-
             db = new TopStoreDb();
 
-            var firstPhone = new Product();
-            firstPhone.Model = "iPhone X";
-            firstPhone.Price = 8999;
-            firstPhone.Memory = 64;
-            firstPhone.InStock = true;
-
-            //    var secondPhone = new Product();
-            //    secondPhone.Model = "iPhone Xs";
-            //    secondPhone.Price = 10499;
-            //    secondPhone.Memory = 64;
-            //    secondPhone.InStock = true;
-
-            //    var thirdPhone = new Product();
-            //    thirdPhone.Model = "iPhone Xr";
-            //    thirdPhone.Price = 11299;
-            //    thirdPhone.Memory = 128;
-            //    thirdPhone.InStock = true;
-
-            db.AllProducts.Add(firstPhone);
-            //    db.Products.Add(secondPhone);
-            //    db.Products.Add(thirdPhone);
-            db.SaveChanges();
-
-            //db.AllOrders.Load();
-
-            //    var firstOrder = new Order
-            //    {
-            //        ClientName = "Vladyslav Maevsky",
-            //        ClientMail = "realmaevsky@gmail.com",
-            //        ClientPhone = "380988826648",
-            //        ProductsInOrder = new List<Product>() { firstPhone, secondPhone }
-            //    };
-            //    db.AllOrders.Add(firstOrder);
-            //    db.SaveChanges();
+            //Need new edited tables..wtf?
+            newTables();
 
             //new StartLoading().ShowDialog();
 
@@ -71,6 +38,81 @@ namespace TopStoreApp
 
                 fContainer.Navigate(new System.Uri("Pages/StartPage.xaml", UriKind.RelativeOrAbsolute));
             
+        }
+
+        private void newTables()
+        {
+            User adm = new User();
+            adm.Login = "root";
+            adm.Password = "admin";
+            adm.AccessLevel = 2;
+            adm.Email = "realmaevsky@gmail.com";
+            adm.FirstName = "Vladyslav";
+            adm.LastName = "Hutsaliuk";
+
+            db.Accounts.Add(adm);
+            db.SaveChanges();
+
+            Product a = new Product();
+            Product b = new Product();
+            Product c = new Product();
+            Product d = new Product();
+            Product e = new Product();
+
+            a.Model = "iPhone X";
+            a.Price = 8799;
+            a.Memory = 64;
+            a.InStock = true;
+
+            b.Model = "iPhone Xs";
+            b.Price = 9799;
+            b.Memory = 64;
+            b.InStock = true;
+
+            c.Model = "iPhone Xr";
+            c.Price = 10499;
+            c.Memory = 128;
+            c.InStock = true;
+
+            d.Model = "iPhone Xs Max";
+            d.Price = 12199;
+            d.Memory = 128;
+            d.InStock = true;
+
+            e.Model = "iPhone 13";
+            e.Price = 34999;
+            e.Memory = 256;
+            e.InStock = true;
+
+            db.AllProducts.Add(a);
+            db.AllProducts.Add(b);
+            db.AllProducts.Add(c);
+            db.AllProducts.Add(d);
+            db.AllProducts.Add(e);
+
+            db.SaveChanges();
+
+            Manager mngr = new Manager();
+
+            mngr.OrdersInProgress = 4;
+            mngr.Online = true;
+            mngr.AccountInfo.Login = "manager01";
+            mngr.AccountInfo.Password = "managerpswrd01";
+            mngr.AccountInfo.AccessLevel = 1;
+            db.Managers.Add(mngr);
+            db.SaveChanges();
+
+            Order ordr = new Order();
+            ordr.Client.FirstName = "Alex";
+            ordr.Client.LastName = "Nagorskiy";
+            ordr.Client.PhoneNumber = "380971234567";
+            ordr.ProductsInOrder.Add(e);
+            ordr.ProductsInOrder.Add(b);
+            ordr.ProductsInOrder.Add(a);
+            ordr.ResponsibleMngr = mngr;
+
+            db.AllOrders.Add(ordr);
+            db.SaveChanges();
         }
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -158,6 +200,23 @@ namespace TopStoreApp
         }
 
         private void btnMyOrders_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+
+        private void btnAllProducts_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnAllProducts;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Всі products";
+            }
+        }
+
+        private void btnAllProducts_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -256,6 +315,11 @@ namespace TopStoreApp
             fContainer.Navigate(new System.Uri("Pages/UserOrder.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        private void btnAllProducts_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("Pages/AllProducts.xaml", UriKind.RelativeOrAbsolute));
+        }
+
         private void btnOrderList_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/AllOrdersInfo.xaml", UriKind.RelativeOrAbsolute));
@@ -275,6 +339,7 @@ namespace TopStoreApp
         {
             fContainer.Navigate(new System.Uri("Pages/UserSettings.xaml", UriKind.RelativeOrAbsolute));
         }
+
 
         private void exitButton_MouseDown(object sender, MouseButtonEventArgs e)
         {

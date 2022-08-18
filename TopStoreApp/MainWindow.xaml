@@ -76,15 +76,17 @@
                         </Button>
                         <Label Content="_____________________________________" Width="62"/>
                         <!--Admin Panel-->
+                        <Button Foreground="{DynamicResource adminColor}" x:Name="btnAllProducts" Style="{DynamicResource PopupButtonStyle}"  
+                                MouseEnter="btnAllProducts_MouseEnter" MouseLeave="btnAllProducts_MouseLeave"
+                                Click="btnAllProducts_Click">
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
+                                           Icon="{DynamicResource products}" Foreground="{DynamicResource adminColor}"  IconWidth="16" 
+                                           Text="Всі products" VerticalAlignment="Center"/>
+                        </Button>
+                        
                         <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  
                                 MouseEnter="btnOrderList_MouseEnter" MouseLeave="btnOrderList_MouseLeave"
                                 Click="btnOrderList_Click">
-                            <!--<iconPacks:PackIconMaterial Kind="Account" 
-                                                VerticalAlignment="Center"
-                                                Margin="2,0,0,0"
-                                                Width="20" Height="20"
-                                                Opacity="1"
-                                                Foreground="{StaticResource FirstIconColor}"/>-->
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
                                            Icon="{DynamicResource dashboard}" IconWidth="16" 
                                            Text="Всі замовлення" VerticalAlignment="Center"/>
