@@ -29,14 +29,14 @@ namespace TopStoreApp.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             db = new TopStoreDb();
-            db.Managers.Load();
+            db.AllManagers.Load();
             AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
         private void RefreshBD()
         {
             AllManagersDataGrid.Items.Refresh();
-            db.Managers.Load();
+            db.AllManagers.Load();
             AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
@@ -54,12 +54,12 @@ namespace TopStoreApp.Pages
 
         private void SortAllManagers_Click(object sender, RoutedEventArgs e)
         {
-            AllManagersDataGrid.ItemsSource = db.Managers.Local.ToBindingList();
+            AllManagersDataGrid.ItemsSource = db.AllManagers.Local.ToBindingList();
         }
 
         private void SortWorkedManagers_Click(object sender, RoutedEventArgs e)
         {
-            AllManagersDataGrid.ItemsSource = db.Managers.Local.ToBindingList().Where(mngr => mngr.Online == true);
+            AllManagersDataGrid.ItemsSource = db.AllManagers.Local.ToBindingList().Where(mngr => mngr.Online == true);
         }
 
         private void RefreshData_Click(object sender, RoutedEventArgs e)

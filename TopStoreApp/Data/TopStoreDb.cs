@@ -20,7 +20,7 @@ namespace TopStoreApp.Data
 
         public virtual DbSet<Order> AllOrders { get; set; }
 
-        public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<Manager> AllManagers { get; set; }
 
     }
 }

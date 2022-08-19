@@ -31,27 +31,15 @@ namespace TopStoreApp.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             db = new TopStoreDb();
-            db.Managers.Load();
+            db.AllProducts.Load();
             ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList();
         }
 
         private void RefreshBD()
         {
             ProductsDataGrid.Items.Refresh();
-            db.Managers.Load();
+            db.AllProducts.Load();
             ProductsDataGrid.ItemsSource = db.AllProducts.Local.ToBindingList();
-        }
-
-        private void editProduct_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Кнопка не працює...");
-            RefreshBD();
-        }
-
-        private void deleteProduct_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Кнопка не працює...");
-            RefreshBD();
         }
 
         private void SortAllProducts_Click(object sender, RoutedEventArgs e)
@@ -70,6 +58,24 @@ namespace TopStoreApp.Pages
         }
         private void RefreshData_Click(object sender, RoutedEventArgs e)
         {
+            RefreshBD();
+        }
+
+        private void AddProdButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Кнопка не працює...");
+            RefreshBD();
+        }
+
+        private void editProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Кнопка не працює...");
+            RefreshBD();
+        }
+
+        private void deleteProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Кнопка не працює...");
             RefreshBD();
         }
     }

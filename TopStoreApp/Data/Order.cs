@@ -12,20 +12,22 @@ namespace TopStoreApp.Data
 
         public User Client { get; set; }
 
+
+        private decimal totalPrice;
+
         public decimal TotalPrice 
         { 
             get
             {
-                return TotalPrice;
+                return totalPrice;
             }
             set
             {
                 foreach (var item in ProductsInOrder)
                 {
-                    TotalPrice += item.Price;
-                }
-                
-            } 
+                    totalPrice += item.Price;
+                }                
+            }
         }
 
         public Manager ResponsibleMngr { get; set; }

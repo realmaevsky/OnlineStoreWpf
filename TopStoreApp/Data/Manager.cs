@@ -10,23 +10,19 @@ namespace TopStoreApp.Data
     {
         public int Id { get; set; }
 
-        public int InnerId
+        public int ManagerID
         {
-            get { return InnerId; }
-            private set { InnerId = 900 + Id; }
+            get { return 900 + Id; }
         }
 
         public User AccountInfo { get; set; }
 
-        public string WorkName { get { return "Manager" + InnerId; } }
+        public string WorkName { get { return "Manager" + ManagerID; } }
 
         public bool Online { get; set; }
 
         public int OrdersInProgress { get; set; }
 
         public int CompletedOrders { get; set; }
-
-
-
     }
 }

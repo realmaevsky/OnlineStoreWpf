@@ -27,7 +27,8 @@ namespace TopStoreApp
         {
             db = new TopStoreDb();
 
-            //Need new edited tables..wtf?
+           
+
             newTables();
 
             //new StartLoading().ShowDialog();
@@ -42,6 +43,12 @@ namespace TopStoreApp
 
         private void newTables()
         {
+            var mngggr = new User();
+            mngggr.Login = "manager01";
+            mngggr.Password = "managerpswrd01";
+            mngggr.AccessLevel = 1;
+            db.Accounts.Add(mngggr);
+            db.SaveChanges();
             User adm = new User();
             adm.Login = "root";
             adm.Password = "admin";
@@ -94,21 +101,20 @@ namespace TopStoreApp
 
             Manager mngr = new Manager();
 
-            mngr.OrdersInProgress = 4;
+            mngr.OrdersInProgress = 14;
             mngr.Online = true;
-            mngr.AccountInfo.Login = "manager01";
-            mngr.AccountInfo.Password = "managerpswrd01";
-            mngr.AccountInfo.AccessLevel = 1;
-            db.Managers.Add(mngr);
+            //mngr.AccountInfo.Login = "manager01";
+            //mngr.AccountInfo.Password = "managerpswrd01";
+            //mngr.AccountInfo.AccessLevel = 1;
+            db.AllManagers.Add(mngr);
             db.SaveChanges();
 
             Order ordr = new Order();
-            ordr.Client.FirstName = "Alex";
-            ordr.Client.LastName = "Nagorskiy";
-            ordr.Client.PhoneNumber = "380971234567";
-            ordr.ProductsInOrder.Add(e);
-            ordr.ProductsInOrder.Add(b);
-            ordr.ProductsInOrder.Add(a);
+            //ordr.Client.FirstName = "Alex";
+            //ordr.Client.LastName = "Nagorskiy";
+            //ordr.Client.PhoneNumber = "380971234567";
+            ordr.TotalPrice = 1555;
+            ordr.ProductsInOrder.Add(db.AllProducts.First());
             ordr.ResponsibleMngr = mngr;
 
             db.AllOrders.Add(ordr);

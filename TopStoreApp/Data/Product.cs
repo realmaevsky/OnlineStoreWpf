@@ -20,6 +20,13 @@ namespace TopStoreApp.Data
 
         public string ImageSource { get; set; }
 
-        public Order Ordr { get; set; }
+        public int Count { get; set; }
+
+        public ICollection<Order> Ordr { get; set; }
+
+        public Product()
+        {
+            Ordr = new List<Order>();
+        }
     }
 }

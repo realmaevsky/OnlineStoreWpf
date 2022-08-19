@@ -238,7 +238,7 @@
                         <TextBlock Text="Додати product"/>
                     </StackPanel>
                 </Button>
-                <Button Name ="refreshData" Style="{StaticResource addButton}" Click="refreshData_Click" Margin="0,24,10,4" Grid.Row="1" Width="42">
+                <Button Name ="refreshData" Style="{StaticResource addButton}" Click="RefreshData_Click" Margin="0,24,10,4" Grid.Row="1" Width="42">
                     <StackPanel Orientation="Horizontal" Width="24">
                         <icon:PackIconMaterial Kind="Refresh" VerticalAlignment="Center"
                                                HorizontalAlignment="Center"
@@ -301,7 +301,7 @@
                                             <icon:PackIconMaterial Kind="PencilOutline"
                                                                    Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
-                                        <Button Name="deleteProductButton_Click" Style="{StaticResource gridRemoveButton}" Click="deleteProductButton_Click">
+                                        <Button Name="deleteProductButton" Style="{StaticResource gridRemoveButton}" Click="deleteProductButton_Click">
                                             <icon:PackIconMaterial Kind="DeleteOutline" 
                                                                    Style="{StaticResource gridButtonIcon}"
                                                                    Margin="5 0 0 0"/>
