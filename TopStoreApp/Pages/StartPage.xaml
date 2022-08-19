@@ -13,26 +13,146 @@
             <Border.Effect>
                 <BlurEffect Radius="1"/>
             </Border.Effect>
-            <Image Name="BoardStartPageImage" Source="/Res/Posters/startpage_upper.jpg" Margin="424,27,39,229">
-                <Image.Effect>
-                    <DropShadowEffect BlurRadius="12" ShadowDepth="5" Opacity="0.65"/>
-                </Image.Effect>
+            <Image Name="BoardStartPageImage" Source="/Res/Posters/buttonImg4.jpg" Margin="422,27,39,244">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
             </Image>
         </Border>
-        <Image Name="BoardRightDownImage" Source="/Res/Posters/xiaomi-pad-5.jpg" Margin="854,420,36,24">
-            <Image.Effect>
-                <DropShadowEffect BlurRadius="12" ShadowDepth="5" Opacity="0.65"/>
-            </Image.Effect>
+        <Image Name="BoardRightDownImage" Source="/Res/Posters/buttonImg2.jpg" Margin="864,420,41,24">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
         </Image>
-        <Image Name="BoardCenterDownImage" Source="/Res/Posters/X-T30-DSF4322-678x452.jpg" Margin="601,420,267,23">
-            <Image.Effect>
-                <DropShadowEffect BlurRadius="12" ShadowDepth="5" Opacity="0.65"/>
-            </Image.Effect>
+        <Image Name="BoardCenterDownImage" Source="/Res/Posters/buttonImg3.jpg" Margin="595,420,254,23">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
         </Image>
-        <Image Name="BoardLeftDownImage" Source="/Res/Posters/xiaomi12.jpg" Margin="426,422,525,26">
-            <Image.Effect>
-                <DropShadowEffect BlurRadius="12" ShadowDepth="5" Opacity="0.65"/>
-            </Image.Effect>
+        <Image Name="BoardLeftDownImage" Source="/Res/Posters/buttonImg7.jpg" Margin="423,419,526,24">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image Name="BoardLeftFirstImage" Source="/Res/Posters/buttonImg5.jpg" Margin="102,28,701,436">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image Name="BoardLeftSecondImage" Source="/Res/Posters/buttonImg8.jpg" Margin="101,219,701,244">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Image Name="BoardLeftThirdImage" Source="/Res/Posters/buttonImg6.jpg" Margin="101,421,698,27">
+            <Image.Style>
+                <Style TargetType="{x:Type Image}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="5"
+                                             Color="Black"
+                                        Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
         </Image>
     </Grid>
 

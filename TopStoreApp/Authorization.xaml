@@ -102,154 +102,6 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
-    <!--<Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="260"/>
-            </Grid.RowDefinitions>
-
-
-            <Border Background="{DynamicResource BackgroundGradient}" CornerRadius="30" Opacity ="0.9" Grid.RowSpan="3"/>
-
-            <Grid Name="ToolBar" Grid.Row="0">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Image Name="minButton" Height="17" Width="17" Margin="5,7,2,10" MouseDown="minButton_MouseDown">
-                        <Image.Style>
-                            <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="res/img/minimize.png"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=minButton}" Value="True">
-                                        <Setter Property="Source" Value="res/img/minimizeA.png"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Image.Style>
-                        <Image.Effect>
-                            <BlurEffect Radius="1"/>
-                        </Image.Effect>
-                    </Image>
-                    <Image Name="exitButton" Height="17" Width="17" Margin="5,7,15,10" MouseDown="exitButton_MouseDown">
-                        <Image.Style>
-                            <Style TargetType="{x:Type Image}">
-                                <Setter Property="Source" Value="res/img/close.png"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsMouseOver, ElementName=exitButton}" Value="True">
-                                        <Setter Property="Source" Value="res/img/closeA.png"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Image.Style>
-                        <Image.Effect>
-                            <BlurEffect Radius="1"/>
-                        </Image.Effect>
-                    </Image>
-                </StackPanel>
-            </Grid>
-
-            <StackPanel Grid.Row="1" VerticalAlignment="Center" 
-                        MouseDown="Authorization_OnMouseDown">
-                <Image Source="res/img/whitelogo.png" Width="138" Height="127" Opacity="0.7"/>
-                <TextBlock Text="TOP STORE"
-                           FontWeight="Light"
-                           FontFamily="helvetica"
-                           FontSize="22"
-                           Foreground="{DynamicResource FirstTextColor}"
-                           Opacity="0.7"
-                           Height="28" Width="112"
-                           Margin="10,0,0,0"/>
-            </StackPanel>
-
-            <StackPanel Grid.Row="2" >
-                <Label Name="loginLabel"
-                             Content="Ім'я користувача:"
-                             FontFamily="Helvetica"
-                             FontWeight="Light"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             Foreground="{DynamicResource FirstTextColor}"
-                       HorizontalContentAlignment="Left"
-                             Opacity="0.6"
-                       Margin="-97,20,0,0"/>
-                <StackPanel Orientation="Horizontal">
-
-                    <TextBox Name="userLogin" 
-                             FontFamily="Helvetica"
-                             FontWeight="Light"
-                             FontSize="20"
-                             Foreground="{DynamicResource FirstTextColor}"
-                             Background="Transparent"
-                             BorderThickness="0"
-                             Width="220"
-                             HorizontalContentAlignment="Left"
-                             Opacity="0.8"
-                             Height="25"
-                             Margin="63,0,0,0"/>
-                    <iconPacks:PackIconMaterial Kind="Account" 
-                                                VerticalAlignment="Bottom"
-                                                Margin="3,0,0,3"
-                                                Opacity="0.6"
-                                                Foreground="White"/>
-
-                </StackPanel>
-
-                <Border Width="237"
-                        Height="2"
-                        Background="White"
-                        Opacity="0.4"
-                        HorizontalAlignment="Left"
-                        Margin="65,0,0,0"/>
-                <Label Name="passwordLabel"
-                             Content="Пароль:"
-                             FontFamily="Helvetica"
-                             FontWeight="Light"
-                             FontSize="20"
-                             HorizontalAlignment="Center"
-                             Foreground="{DynamicResource FirstTextColor}"
-                       HorizontalContentAlignment="Left"
-                             Opacity="0.6"
-                       Margin="-175,10,0,0"/>
-                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                    <PasswordBox Name="userPassword" 
-                                 FontFamily="Helvetica"
-                                 FontWeight="Light"
-                                 FontSize="20"
-                                 Foreground="{DynamicResource FirstTextColor}"
-                                 Background="Transparent"
-                                 BorderThickness="0"
-                                 Width="220"
-                                 HorizontalContentAlignment="Left"
-                                 Opacity="0.8"
-                                 Height="25"
-                                 Margin="63,0,0,0"/>
-                    <iconPacks:PackIconMaterial Kind="EyeOff" 
-                                                VerticalAlignment="Bottom" 
-                                                Margin="3,0,0,3"
-                                                Opacity="0.6"
-                                                Foreground="{DynamicResource FirstTextColor}"/> 
-                </StackPanel>
-
-
-                <Border Width="237"
-                        Height="2"
-                        Background="{DynamicResource FirstTextColor}"
-                        Opacity="0.4"
-                        HorizontalAlignment="Left"
-                        Margin="65,0,0,0"/>
-
-                <StackPanel Orientation="Horizontal" Margin="0,30,0,0" Height="61">
-                    <Button Name="authorizeButton" Width="185" Height="50" 
-                            Content="Авторизуватись" FontSize="24" 
-                            Margin="93,0,60,10" Click="authorizeButton_Click"/>
-                </StackPanel>
-
-
-            </StackPanel>
-        </Grid>
-    </Grid>-->
-
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -346,7 +198,7 @@
 
                 <PasswordBox x:Name = "userPassword" Height="40" 
                              Style="{StaticResource PB}" Margin ="68,101,68,0" 
-                             VerticalAlignment="Top"/>
+                             VerticalAlignment="Top" KeyDown="userPassword_KeyDown"/>
                 <TextBlock Name="Wmark" Text="Пароль"  Height="30" 
                            IsHitTestVisible="False" FontSize="20" 
                            Margin="83,106,229,0" 
@@ -368,7 +220,9 @@
                             Content="Авторизуватись" 
                         FontSize="24" 
                             Margin="58,0,58,10" 
-                        Click="authorizeButton_Click"/>
+                        Click="authorizeButton_Click">
+                    
+                </Button>
             </Grid>
 
 

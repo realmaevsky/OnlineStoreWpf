@@ -95,6 +95,11 @@
     <Compile Include="EditUser.xaml.cs">
       <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208190704482_InitialCreate.cs" />
+    <Compile Include="Migrations\202208190704482_InitialCreate.designer.cs">
+      <DependentUpon>202208190704482_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddUsers.xaml.cs">
       <DependentUpon>AddUsers.xaml</DependentUpon>
     </Compile>
@@ -239,6 +244,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202208190704482_InitialCreate.resx">
+      <DependentUpon>202208190704482_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -271,15 +279,10 @@
     <Resource Include="Res\img\minimizeA.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Res\Posters\startpage_upper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Res\Posters\X-T30-DSF4322-678x452.jpg" />
-    <Resource Include="Res\Posters\xiaomi-pad-5.jpg" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Res\Posters\xiaomi12.jpg" />
+    <Resource Include="Res\Posters\buttonImg1.jpg" />
+    <Resource Include="Res\Posters\buttonImg2.jpg" />
+    <Resource Include="Res\Posters\buttonImg3.jpg" />
+    <Resource Include="Res\Posters\buttonImg4.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Res\img\add.png" />
@@ -298,6 +301,20 @@
     <Resource Include="Images\p4.png" />
     <Resource Include="Images\remove.png" />
     <Resource Include="Images\visa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Posters\buttonImg5.jpg" />
+    <Resource Include="Res\Posters\buttonImg6.jpg" />
+    <Resource Include="Res\Posters\buttonImg7.jpg" />
+    <Resource Include="Res\Posters\buttonImg8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\img\iphone-13pro.png" />
+    <Resource Include="Pages\img\iphone-13.png" />
+    <Resource Include="Pages\img\iphone-x.png" />
+    <Resource Include="Pages\img\iphone-xr.png" />
+    <Resource Include="Pages\img\iphone-xs-max.png" />
+    <Resource Include="Pages\img\iphone-xs.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

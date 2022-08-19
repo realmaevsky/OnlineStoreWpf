@@ -6,6 +6,11 @@
         <GradientStop Color="#FF421F3B" Offset="1"/>
     </LinearGradientBrush>
 
+    <LinearGradientBrush x:Key="AnotherBackgroundGradient">
+        <GradientStop Color="#7be9f6" Offset="0.0"/>
+        <GradientStop Color="#f083da" Offset="1"/>
+    </LinearGradientBrush>
+
     <SolidColorBrush x:Key="FirstBackgroundColor" Color="#FF112629"/>
     <SolidColorBrush x:Key="SecondBackgroundColor" Color="#FF8E2C7A"/>
     <SolidColorBrush x:Key="ThirdBackgroundColor" Color="#FF5A1B4C"/>
@@ -29,8 +34,8 @@
     <SolidColorBrush x:Key="brdrBrushColor" Color="LightCyan"/>
     <SolidColorBrush x:Key="pageBrushColor" Color="#FF8BB1EA"/>
 
-    <SolidColorBrush x:Key="toggleInColor" Color="#FFA6DEDE"/>
-    <SolidColorBrush x:Key="toggleBackColor" Color="#FFDADCDC"/>
-    <SolidColorBrush x:Key="toggleSecondInColor" Color="#FF27C2D6"/>
+    <SolidColorBrush x:Key="toggleInColor" Color="LightGray"/>
+    <SolidColorBrush x:Key="toggleBackColor" Color="DarkGray"/>
+    <SolidColorBrush x:Key="toggleSecondInColor" Color="LightGray"/>
 
 </ResourceDictionary>

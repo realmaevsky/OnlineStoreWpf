@@ -26,14 +26,11 @@ namespace TopStoreApp
         public MainWindow()
         {
             db = new TopStoreDb();
-
-           
-
-            newTables();
+            //newTables();
 
             //new StartLoading().ShowDialog();
 
-            //new Authorization().ShowDialog()
+            //new Authorization().ShowDialog();
 
             InitializeComponent();
 

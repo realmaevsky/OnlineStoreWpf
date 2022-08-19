@@ -6,73 +6,145 @@
       xmlns:local="clr-namespace:TopStoreApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
-      Title="Товари" Background="Transparent"> 
+      Title="Товари" Background="Transparent">
+    <Page.Resources>
+        <Style x:Key="addToCartButton" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="Foreground" Value="{DynamicResource FirstBackgroundColor}"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 20 0 10"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Grid.Row" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource FirstBackgroundColor}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ThirdTextColor}"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding InStock}"
+                        Value="False">
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="Foreground" Value="DarkRed"/>
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
-    
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border CornerRadius="30"
-            BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1" Grid.RowSpan="8">
+            BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                BorderThickness="1" Margin="0,-6,0,0" 
+                Grid.RowSpan="2" 
+                Grid.ColumnSpan="2">
             <Border.Effect>
-                <DropShadowEffect Direction="333" ShadowDepth="3" BlurRadius="5"/>
+                <DropShadowEffect Direction="333" 
+                                  ShadowDepth="3" 
+                                  BlurRadius="5"/>
             </Border.Effect>
         </Border>
         <ListView Name="listViewPhones" Grid.Row="1" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                  Foreground="{StaticResource FirstTextColor}"
+                  Foreground="{StaticResource AnotherBackgroundGradient}"
                   HorizontalContentAlignment="Center" 
-                  Margin="76,29,24,34" 
-                  Background="{x:Null}" 
-                  BorderBrush="Black">
+                  Margin="26,59,60,59" 
+                  Background="Transparent">
             <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
+                <ItemsPanelTemplate >
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
+            <ListView.ItemTemplate >
                 <DataTemplate>
-                    <Grid Margin="20" Width="280">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="70"></RowDefinition>
+                    <Grid Margin="20" Width="250" OpacityMask="#FF929292">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
                             <RowDefinition Height="210"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Width="400" Grid.Row="1" Stretch="UniformToFill"
-                               HorizontalAlignment="Center" Margin="5">
-                            <Image.Source>
-                                <Binding Path="ImagePreview">
-                                    <Binding.TargetNullValue>
-                                        <ImageSource>/Res/img/logo.png</ImageSource>
-                                    </Binding.TargetNullValue>
-                                </Binding>
-                            </Image.Source>
-                        </Image>
-                        <TextBlock Name="tBoxModel" Text="{Binding Model}" VerticalAlignment="Center" TextAlignment="Center"
-                                   Width="90" TextWrapping="Wrap" HorizontalAlignment="Center"
-                                   Margin="5 5" FontSize="26" Grid.Row="0">
-                        </TextBlock>
+                        <Border CornerRadius="30"
+            BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                BorderThickness="1"
+                Grid.RowSpan="7"/>
 
-                        <TextBlock Name="tBoxPrice" Text="{Binding Price, StringFormat={}{0:N2} Грн.}" HorizontalAlignment="Center"
-                                   Margin="5 5 5 15" FontSize="26" Grid.Row="2" FontWeight="Bold">
+                        <TextBlock Name="tBoxModel" Text="{Binding Model}" VerticalAlignment="Center" TextAlignment="Center"
+                                   Width="150" TextWrapping="Wrap" HorizontalAlignment="Center"
+                                   Margin="5 5" FontSize="20" Grid.Row="0">
                         </TextBlock>
-                        <TextBlock Name="tBoxMemory" Text="{Binding Memory,StringFormat={}{0:N2} Гб}" FontSize="14" Grid.Row="3" HorizontalAlignment="Right">
+                        <Image Width="300" Grid.Row="2" Stretch="Uniform"
+                               HorizontalAlignment="Center" Margin="5"  Source="{Binding ImageSource}">
+                            <Image.Effect>
+                                <DropShadowEffect Color="Gray" BlurRadius="8" ShadowDepth="2" Direction="337" />
+                            </Image.Effect>
+                        </Image>
+                        <TextBlock Name="tBoxPrice" 
+                                   Text="{Binding Price, StringFormat={}{0} Грн.}" HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="5 5 5 15" FontSize="18" Grid.Row="3" FontWeight="Bold">
                         </TextBlock>
-                        <TextBlock Name="tBoxInStock" Text="{Binding InStock}" FontSize="14" Grid.Row="3" HorizontalAlignment="Left">
+                        <TextBlock Name="tBoxMemory" 
+                                   Text="{Binding Memory,StringFormat={}{0} Гб}" 
+                                   FontSize="14" 
+                                   Grid.Row="1" 
+                                   Height="20"
+                                   Width="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="10 0 0 0">
                         </TextBlock>
+                        <!--<TextBlock x:Name="tBoxInStock" 
+                                   Text="{Binding InStock}" 
+                                   FontSize="14" Grid.Row="3" 
+                                   FontWeight="Bold" 
+                                   HorizontalAlignment="Left">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding InStock}" Value="True">
+                                            <Setter Property="Foreground" Value="Green" />
+                                            <Setter Property="Text" Value="V nalichii" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding InStock}" Value="False">
+                                            <Setter Property="Foreground" Value="Red" />
+                                            <Setter Property="Text" Value="Net v nalichii" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>-->
+                        <Button  Name="AddToCart" 
+                                 HorizontalAlignment="Stretch" 
+                                 VerticalAlignment="Bottom" 
+                                 Grid.Row="4" 
+                                 Content="Add to Cart"
+                                 Style="{StaticResource addToCartButton}"
+                                 Click="AddToCart_Click">
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Border CornerRadius="30" Background="{DynamicResource BackgroundGradient}"
-            BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1">
-            <Border.Effect>
-                <BlurEffect Radius="1"/>
-            </Border.Effect>
-        </Border>
     </Grid>
 </Page>

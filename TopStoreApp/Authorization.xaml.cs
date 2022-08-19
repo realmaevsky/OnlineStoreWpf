@@ -70,7 +70,7 @@ namespace TopStoreApp
                 try
                 {
                     User loginUser = data.Accounts.Where((u) => u.Login == login && u.Password == password).Single();
-                    
+
                     isLogin = true;
 
 
@@ -83,8 +83,16 @@ namespace TopStoreApp
                 catch
                 {
                     MessageBox.Show("Логін або пароль невірний!", "Авторизація", MessageBoxButton.OK, MessageBoxImage.Error);
-                    
+
                 }
+            }
+        }
+
+        private void userPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                authorizeButton_Click(sender, e);
             }
         }
     }

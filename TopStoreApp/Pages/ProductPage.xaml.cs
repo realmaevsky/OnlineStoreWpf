@@ -32,7 +32,12 @@ namespace TopStoreApp.Pages
 
             listViewPhones.ItemsSource = db.AllProducts.Local.ToList();
 
+        }
 
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBox.Show("Product is added to shopping cart");
         }
     }
 }
