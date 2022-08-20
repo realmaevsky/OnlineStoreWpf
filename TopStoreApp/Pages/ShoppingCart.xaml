@@ -180,7 +180,9 @@
 
     </Page.Resources>
     <Grid>
-        <Border CornerRadius="30" Grid.ColumnSpan="2" BorderBrush="{DynamicResource AnotherBackgroundGradient}"/>
+        <Border CornerRadius="30"
+                BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                Grid.ColumnSpan="2"/>
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -233,9 +235,7 @@
                  Grid.ColumnSpan="6"
                  BorderBrush="{DynamicResource AnotherBackgroundGradient}"
                  BorderThickness="2"/>
-                                <Border Grid.Column="0" CornerRadius="30"
-                                        BorderBrush="{DynamicResource AnotherBackgroundGradient}"
-                                        BorderThickness="2"
+                                <Border Grid.Column="0"
                                         Height="80" 
                                          Width="80">
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform"/>
@@ -250,6 +250,12 @@
                                     </Ellipse.Fill>
                                 </Ellipse>-->
 
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="1" 
+                   Text="Товар:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="1" 
                    Text="{Binding Model}"
@@ -269,6 +275,12 @@
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold"
                    FontSize="16"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="2" 
+                   Text="Ціна:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
 
                                 <TextBlock x:Name="countTxtBlock" Foreground="{DynamicResource BackgroundGradient}"
                    Grid.Column="3" 
@@ -293,13 +305,19 @@
 
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="5" 
-                   Text="{Binding TotalCost, StringFormat={}{0} грн.}"
+                   Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}"
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold"
                    FontSize="16"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="5" 
+                   Text="Загальна ціна:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
 
-                                <Button Style="{StaticResource buttonDelete}" 
-                Grid.Column="6">
+                                <Button Name="deleteProduct" Style="{StaticResource buttonDelete}" 
+                Grid.Column="6" Click="deleteProduct_Click" >
                                     <Image Source="/Images/remove.png" 
                    Width="18" Style="{StaticResource icon}"/>
                                 </Button>
@@ -321,18 +339,27 @@
                         </StackPanel>
                     </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Text="Загальна сума:" FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
-                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} грн.}" FontWeight="SemiBold" Foreground="{StaticResource AnotherBackgroundGradient}" FontSize="16" Margin="30 0 0 0"/>
+                        <TextBlock Text="Загальна вартість:" FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
+                        <TextBlock Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0} грн.}" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="{StaticResource AnotherBackgroundGradient}" 
+                                   FontSize="16" 
+                                   Margin="0 0 70 0"/>
                     </StackPanel>
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1" Background="Transparent" Opacity="0.7" Margin="0,114,0,159">
+            <Grid Grid.Column="1" 
+                  Background="Transparent" 
+                  Opacity="0.7" 
+                  Margin="0,114,0,159">
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="10" BlurRadius="50"/>
                 </Grid.Effect>
-                
-                
+
+                <Border CornerRadius="30"
+                        BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                        BorderThickness="2"/>
 
                 <StackPanel Margin="25,25,25,0" VerticalAlignment="Top" Height="276">
                     <TextBlock Text="Деталі замовлення" Foreground="{DynamicResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24" Margin="0 0 0 70"/>
@@ -402,7 +429,7 @@
 
                 </StackPanel>
 
-                <Button Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,296,62,10"/>
+                <Button Name="CreateOrderButton" Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,296,62,10" Click="CreateOrderButton_Click"/>
             </Grid>
         </Grid>
     </Grid>

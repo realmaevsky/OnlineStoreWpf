@@ -31,7 +31,7 @@ namespace TopStoreApp.Pages
 
             db.AllProducts.Load();
 
-            listViewPhones.ItemsSource = db.AllProducts.Local.ToList();
+            listViewPhones.ItemsSource = db.AllProducts.Local.ToBindingList();
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)
@@ -40,8 +40,9 @@ namespace TopStoreApp.Pages
                 currentProduct = (listViewPhones.SelectedItem as Product);
 
             ShoppingCart.tempOrder.ProductsInOrder.Add(currentProduct);
+            //ShoppingCart.products.Add(currentProduct);
 
-            MessageBox.Show($"{currentProduct.Model} додано до кошика.");
+            //MessageBox.Show($"{currentProduct.Model} додано до кошика.");
 
             this.NavigationService.Navigate(new Uri("Pages/ShoppingCart.xaml", UriKind.Relative));
         }

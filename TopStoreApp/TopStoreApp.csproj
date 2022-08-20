@@ -108,6 +108,14 @@
     <Compile Include="Migrations\202208201657257_AddInotifyMigration.designer.cs">
       <DependentUpon>202208201657257_AddInotifyMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208201906393_AddInotify2Migration.cs" />
+    <Compile Include="Migrations\202208201906393_AddInotify2Migration.designer.cs">
+      <DependentUpon>202208201906393_AddInotify2Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208201914113_AddInotify3Migration.cs" />
+    <Compile Include="Migrations\202208201914113_AddInotify3Migration.designer.cs">
+      <DependentUpon>202208201914113_AddInotify3Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddUsers.xaml.cs">
       <DependentUpon>AddUsers.xaml</DependentUpon>
@@ -261,10 +269,19 @@
     <EmbeddedResource Include="Migrations\202208201657257_AddInotifyMigration.resx">
       <DependentUpon>202208201657257_AddInotifyMigration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208201906393_AddInotify2Migration.resx">
+      <DependentUpon>202208201906393_AddInotify2Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208201914113_AddInotify3Migration.resx">
+      <DependentUpon>202208201914113_AddInotify3Migration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

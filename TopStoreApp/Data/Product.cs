@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections.ObjectModel;
 
 namespace TopStoreApp.Data
 {
@@ -17,15 +17,16 @@ namespace TopStoreApp.Data
 
         public decimal Price { get; set; }
 
-        private decimal totalCost
-        {
-            get { return Price * Count; }
-        }
-
+        private decimal totalCost;
 
         public decimal TotalCost
         {
             get { return totalCost; }
+            set 
+            { 
+                totalCost = Price * Count;
+                OnPropertyChanged("TotalCost");
+            }
         }
 
         public short Memory { get; set; }
@@ -42,7 +43,7 @@ namespace TopStoreApp.Data
             set
             {
                 _count = value;
-                OnPropertyChanged("Price");
+                OnPropertyChanged("Count");
             }
 
         }

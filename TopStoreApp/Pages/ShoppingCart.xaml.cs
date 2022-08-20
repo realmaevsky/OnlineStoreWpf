@@ -17,6 +17,7 @@ using TopStoreApp.Pages;
 using System.Data.Entity;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 
 namespace TopStoreApp.Pages
 {
@@ -28,13 +29,19 @@ namespace TopStoreApp.Pages
 
         public Product prodInOrder;
 
+        //public static ObservableCollection<Product> products = new ObservableCollection<Product>();
+
+
+
         public ShoppingCart()
         {
             InitializeComponent();
 
+
             db = new TopStoreDb();
 
-            listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
+            //listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
+            listViewOrder.ItemsSource = tempOrder.ProductsInOrder.ToList();
         }
 
         private void GoToProductPage_Click(object sender, RoutedEventArgs e)
@@ -67,13 +74,20 @@ namespace TopStoreApp.Pages
 
         private void downCounter_Click(object sender, RoutedEventArgs e)
         {
-            prodInOrder.Count--;
             if (prodInOrder.Count > 1)
                 prodInOrder.Count--;
             else
                 prodInOrder.Count = 1;
         }
 
+        private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void deleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
