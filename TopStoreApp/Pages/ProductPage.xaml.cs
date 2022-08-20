@@ -31,6 +31,13 @@ namespace TopStoreApp.Pages
             db.AllProducts.Load();
 
             listViewPhones.ItemsSource = db.AllProducts.Local.ToList();
+        }
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            if(currentProduct == null)
+                currentProduct = (listViewPhones.SelectedItem as Product);
+
 
         }
 

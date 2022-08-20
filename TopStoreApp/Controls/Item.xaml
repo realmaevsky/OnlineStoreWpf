@@ -174,20 +174,20 @@
 
         <Ellipse Height="80" Width="80" Margin="25 10 0 10" HorizontalAlignment="Left">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="{Binding Path=Source,ElementName=item}"/>
+                <ImageBrush ImageSource="{Binding Path=ItemSource,ElementName=ItemSource}"/>
             </Ellipse.Fill>
         </Ellipse>
 
-        <TextBlock Grid.Column="1" Text="{Binding Path=Title,ElementName=item}" FontWeight="SemiBold" FontSize="16" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="1" Text="{Binding Path=Model,ElementName=Model}" FontWeight="SemiBold" FontSize="16" VerticalAlignment="Center"/>
         <TextBlock Grid.Column="1" Text="{Binding Path=Ref,ElementName=item}" Foreground="#909090" FontSize="11" VerticalAlignment="Center" Margin="0 38 0 0"/>
 
-        <TextBlock Grid.Column="2" Text="{Binding Path=Color,ElementName=item}" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16"/>
+        <TextBlock Grid.Column="2" Text="{Binding Path=Price,ElementName=Price}" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16"/>
 
         <TextBlock Grid.Column="3" Text="{Binding Path=Count,ElementName=item}" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16"/>
 
         <StackPanel Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Button Style="{StaticResource buttonCounter}">
-                <Image Source="../Images/add.png"/>
+                <Image Source="/Images/add.png"/>
             </Button>
 
             <Button Style="{StaticResource buttonCounter}" Margin="0 5 0 0">
