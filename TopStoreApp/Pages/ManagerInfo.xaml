@@ -265,7 +265,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
                                         <Border CornerRadius="50" 
-                                                Margin="0 0 10 0" Background="{Binding BgColor}">
+                                                Margin="0 0 10 0" Background="{DynamicResource AnotherBackgroundGradient}">
                                             <TextBlock Text="{Binding AccountInfo.Login}" VerticalAlignment="Center"
                                                        HorizontalAlignment="Center" Foreground="{DynamicResource ThirdTextColor}"
                                                        Margin="0 0 0 1"/>

@@ -33,6 +33,16 @@ namespace TopStoreApp
                     createdAcc.Password = addNewPassword.Password;
                     createdAcc.AccessLevel = Convert.ToInt32(addNewAccessLevel.Text);
 
+                    //if (createdAcc.AccessLevel == 1)
+                    //{
+                    //    var createdMngr = new Manager();
+                    //    createdMngr.AccountInfo = new User();
+                    //    createdMngr.AccountInfo.Login = createdAcc.Login;
+                    //    createdMngr.AccountInfo.Password = createdAcc.Password;
+                    //    createdMngr.AccountInfo.AccessLevel = createdAcc.AccessLevel;
+                    //    db.AllManagers.Add(createdMngr);
+                    //}
+
                     db.Accounts.Add(createdAcc);
                     db.SaveChanges();
                     MessageBox.Show($"Новий користувач [{addNewLogin.Text}] успішно створений!", "Створення користувача", MessageBoxButton.OK, MessageBoxImage.Information);

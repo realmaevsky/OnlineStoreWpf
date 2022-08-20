@@ -14,20 +14,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TopStoreApp.Data;
+using TopStoreApp.Pages;
 
 namespace TopStoreApp.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Apple.xaml
-    /// </summary>
     public partial class ProductPage : Page
     {
         TopStoreDb db;
+        Product currentProduct;
 
         public ProductPage()
         {
             InitializeComponent();
+
             db = new TopStoreDb();
+
             db.AllProducts.Load();
 
             listViewPhones.ItemsSource = db.AllProducts.Local.ToList();
@@ -38,13 +39,21 @@ namespace TopStoreApp.Pages
             if(currentProduct == null)
                 currentProduct = (listViewPhones.SelectedItem as Product);
 
+            ShoppingCart.tempOrder.ProductsInOrder.Add(currentProduct);
 
+            MessageBox.Show($"{currentProduct.Model} додано до кошика.");
+
+            this.NavigationService.Navigate(new Uri("Pages/ShoppingCart.xaml", UriKind.Relative));
         }
 
-        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {
+            var productInfo = (Grid)sender;
 
-            MessageBox.Show("Product is added to shopping cart");
+            if (productInfo.DataContext is Product product)
+            {
+                currentProduct = product;
+            }
         }
     }
 }

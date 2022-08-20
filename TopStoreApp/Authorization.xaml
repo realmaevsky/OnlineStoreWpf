@@ -39,10 +39,10 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Opacity" Value="0.7"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -73,10 +73,10 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Opacity" Value="0.7"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <EventSetter Event="PasswordChanged" Handler="OnPasswordChanged"/>
             <Setter Property="Template">
@@ -177,11 +177,11 @@
                                                 VerticalAlignment="Bottom"
                                                 Margin="285,0,0,105"
                                                 Opacity="0.6"
-                                                Foreground="White"/>
+                                                Foreground="{DynamicResource AnotherBackgroundGradient}"/>
                 <TextBlock x:Name="lgnTxt" Height="30" 
                            Text="Ім'я користувача" IsHitTestVisible="False"
                            FontSize="20" Margin="82,52,134,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource FirstTextColor}" 
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -202,13 +202,13 @@
                 <TextBlock Name="Wmark" Text="Пароль"  Height="30" 
                            IsHitTestVisible="False" FontSize="20" 
                            Margin="83,106,229,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource FirstTextColor}" 
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic"/>
                 <iconPacks:PackIconMaterial Kind="EyeOff" 
                                                 VerticalAlignment="Bottom" 
                                                 Margin="286,0,0,51"
                                                 Opacity="0.6"
-                                                Foreground="{DynamicResource FirstTextColor}"/>
+                                                Foreground="{DynamicResource AnotherBackgroundGradient}"/>
 
             </Grid>
 

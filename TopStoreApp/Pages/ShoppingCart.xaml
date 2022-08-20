@@ -3,8 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TopStoreApp.Pages" 
-      xmlns:uc="clr-namespace:TopStoreApp.Controls"
+      xmlns:local="clr-namespace:TopStoreApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="ShoppingCart">
@@ -70,7 +69,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="#ECF0F1" BorderThickness="0" Padding="5">
+                        <Border CornerRadius="0 30 30 0"  Background="Transparent" BorderThickness="0" Padding="5">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -107,6 +106,58 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
 
+        <Style x:Key="buttonMini" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#666666" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="TB" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid x:Name="root" Height="{TemplateBinding Height}" 
+                              Width ="{TemplateBinding Width}" 
+                              SnapsToDevicePixels="True">
+                            <Border x:Name="Background" BorderThickness="1" CornerRadius="10" Opacity="0.5" 
+                                    Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}"
+                                          IsTabStop="False" Background="{x:Null}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                            </Trigger>-->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="buttonBack" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="FontSize" Value="16" />
@@ -127,62 +178,15 @@
             </Style.Triggers>
         </Style>
 
-        <Style x:Key="buttonClose" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Red" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="buttonMini" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#666666" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
     <Grid>
+        <Border CornerRadius="30" Grid.ColumnSpan="2" BorderBrush="{DynamicResource AnotherBackgroundGradient}"/>
         <Grid>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!--<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Background="#444444" Panel.ZIndex="1" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
-                <Button Style="{StaticResource buttonClose}">
-                    <Image Width="20" Source="/Images/close.png" Margin="2 0 0 0"/>
-                </Button>
-                <Button Style="{StaticResource buttonMini}" Margin="5 0 0 0">
-                    <Image Width="17" Source="/Images/mini.png" VerticalAlignment="Bottom"/>
-                </Button>
-            </StackPanel>-->
 
             <Grid Background="Transparent" Margin="0,10,0,0" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
@@ -192,104 +196,214 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Margin="0 40 0 30">
-                    <TextBlock Text="TOP STORE" Foreground="{StaticResource FirstTextColor}" FontSize="28" FontWeight="SemiBold" FontFamily="Candara Light" VerticalAlignment="Center" Margin="50 0 0 0"/>
-                    <Rectangle VerticalAlignment="Stretch" Fill="{StaticResource FirstTextColor}" Width="0.7" Margin="20 5 20 5"/>
-                    <TextBlock Text="Кошик" Foreground="{StaticResource FirstTextColor}" FontSize="26" VerticalAlignment="Center"/>
+                    <TextBlock Text="TOP STORE" Foreground="{StaticResource AnotherBackgroundGradient}" FontSize="28" FontWeight="SemiBold" FontFamily="Candara Light" VerticalAlignment="Center" Margin="50 0 0 0"/>
+                    <Rectangle VerticalAlignment="Stretch" Fill="{StaticResource AnotherBackgroundGradient}" Width="0.7" Margin="20 5 20 5"/>
+                    <TextBlock Text="Кошик" Foreground="{StaticResource AnotherBackgroundGradient}" FontSize="26" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1">
+                <ListView Name="listViewOrder" Grid.Row="1" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  Foreground="{StaticResource AnotherBackgroundGradient}"
+                  HorizontalContentAlignment="Center" 
+                  Margin="0,0,0,115" 
+                  Background="Transparent" BorderBrush="{x:Null}" Grid.RowSpan="2">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Name="listGrid" Opacity="0.8" 
+                                  Margin="0 15 0 0" 
+                                  HorizontalAlignment="Center" 
+                                  MouseEnter="Grid_MouseEnter_1">
 
-                    <uc:Item Source="/Images/p4.png" Title="Beni T-Shirt" Ref="Ref. 007197660" Color="Black" Count="1" Price="75.00  грн."/>
-                    <uc:Item Source="/Images/p3.png" Title="Patizen Socks" Ref="Ref. 001289258" Color="Cream" Count="3" Price="10.00  грн."/>
-                    <uc:Item Source="/Images/p2.png" Title="Matric Shoes" Ref="Ref. 006542123" Color="Green" Count="1" Price="90.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Cheter Gloves" Ref="Ref. 002322111" Color="Black" Count="2" Price="20.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 009687963" Color="Blue" Count="4" Price="15.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 002122666" Color="Blue" Count="1" Price="68.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 001110475" Color="Blue" Count="1" Price="13.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 003637100" Color="Blue" Count="1" Price="63.00  грн."/>
-                    <uc:Item Source="/Images/p1.png" Title="Beni T-Shirt" Ref="Ref. 007175420" Color="Blue" Count="1" Price="42.00  грн."/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="27"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  Background="{DynamicResource AnotherBackgroundGradient}" 
+                 CornerRadius="30" 
+                 Grid.ColumnSpan="6"
+                 BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                 BorderThickness="2"/>
+                                <Border Grid.Column="0" CornerRadius="30"
+                                        BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                                        BorderThickness="2"
+                                        Height="80" 
+                                         Width="80">
+                                    <Image Source="{Binding ImageSource}" Stretch="Uniform"/>
+                                </Border>
+                                <!--<Ellipse Stroke ="{DynamicResource BackgroundGradient}" 
+                                         Height="80" 
+                                         Width="80" 
+                                         Margin="25 10 0 10" 
+                                         HorizontalAlignment="Left">
+                                    <Ellipse.Fill>
+                                        <ImageBrush Stretch="Uniform" ImageSource="/img/iphone-x.png"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>-->
 
-                </StackPanel>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="1" 
+                   Text="{Binding Model}"
+                   FontWeight="SemiBold" 
+                   FontSize="16" 
+                   VerticalAlignment="Center"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="1" 
+                   Text="{Binding Memory,StringFormat={}{0} GB}" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 38 0 0"/>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="2" 
+                   Text="{Binding Price}"
+                   VerticalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="16"/>
+
+                                <TextBlock x:Name="countTxtBlock" Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="3" 
+                   Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" 
+                   VerticalAlignment="Center" 
+                   FontWeight="SemiBold" 
+                   FontSize="16"/>
+
+                                <StackPanel Grid.Column="4" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+
+                                    <Button Name="addCounter" Style="{StaticResource buttonCounter}" Click="addCounter_Click">
+                                        <Image Source="/Images/add.png"/>
+                                    </Button>
+
+                                    <Button Name="downCounter" Style="{StaticResource buttonCounter}" Margin="0 5 0 0" Click="downCounter_Click">
+                                        <Image Source="/Images/low.png"/>
+                                    </Button>
+
+                                </StackPanel>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="5" 
+                   Text="{Binding TotalCost, StringFormat={}{0} грн.}"
+                   VerticalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="16"/>
+
+                                <Button Style="{StaticResource buttonDelete}" 
+                Grid.Column="6">
+                                    <Image Source="/Images/remove.png" 
+                   Width="18" Style="{StaticResource icon}"/>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
 
                 <Grid Grid.Row="2" Margin="80 40 150 40">
                     <Button Name="GoToProductPage" Foreground="{StaticResource FirstTextColor}" Style="{StaticResource buttonBack}" Click="GoToProductPage_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/left.png" Width="20" OpacityMask="White"/>
-                            <TextBlock Text="Повернутись до товарів" VerticalAlignment="Center" Margin="15 0 0 0" Width="178"/>
+                            <Image Source="/Images/left.png" Width="20" OpacityMask="{DynamicResource AnotherBackgroundGradient}"/>
+                            <TextBlock Text="Повернутись до товарів" 
+                                           VerticalAlignment="Center" 
+                                           Margin="15 0 0 0" 
+                                           Width="178"
+                                           Foreground="{DynamicResource AnotherBackgroundGradient}"/>
                         </StackPanel>
                     </Button>
-
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Text="Загальна сума:" FontSize="16" Foreground="{StaticResource FirstTextColor}"/>
-                        <TextBlock Text="195.00 грн." FontWeight="SemiBold" Foreground="{StaticResource FirstTextColor}" FontSize="16" Margin="30 0 0 0"/>
+                        <TextBlock Text="Загальна сума:" FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
+                        <TextBlock Text="{Binding TotalPrice, StringFormat={}{0} грн.}" FontWeight="SemiBold" Foreground="{StaticResource AnotherBackgroundGradient}" FontSize="16" Margin="30 0 0 0"/>
                     </StackPanel>
                 </Grid>
             </Grid>
 
-            <Grid Grid.Column="1" Background="{StaticResource SideMenuColor}" Opacity="0.5" Margin="0,10,0,0" Grid.RowSpan="2">
+            <Grid Grid.Column="1" Background="Transparent" Opacity="0.7" Margin="0,114,0,159">
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="10" BlurRadius="50"/>
                 </Grid.Effect>
+                
+                
 
-                <Border HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="130" Margin="-30 50 0 0" Background="{StaticResource ThirdColor}" CornerRadius="10 0 0 10" Padding="10 20 5 20">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                <StackPanel Margin="25,25,25,0" VerticalAlignment="Top" Height="276">
+                    <TextBlock Text="Деталі замовлення" Foreground="{DynamicResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24" Margin="0 0 0 70"/>
 
-                        <Ellipse Width="8" Height="8" Fill="{StaticResource FirstBackgroundColor}" Grid.Row="0"/>
-                        <Ellipse Width="8" Height="8" Fill="{StaticResource SecondBackgroundColor}" Grid.Row="1"/>
-                        <Ellipse Width="8" Height="8" Fill="{StaticResource FirstBackgroundColor}" Grid.Row="2"/>
+                    <Grid Name="UserOrderInfo" Height="184">
+                        <TextBox Height="30" x:Name = "txtUserName" Style="{StaticResource TB}" 
+                         Margin ="10,17,10,0" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="usrName" Height="20" 
+                           Text="Ім'я" IsHitTestVisible="False"
+                           FontSize="16" Margin="19,21,202,0" 
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           Opacity="0.5" FontStyle="Italic">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, 
+                                    ElementName=txtUserName}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBox Height="30" x:Name = "txtUserLastName" Style="{StaticResource TB}" 
+                         Margin ="10,67,10,0" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="usrLastName" Height="20" 
+                           Text="Прізвище" IsHitTestVisible="False"
+                           FontSize="16" Margin="19,71,153,0" 
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           Opacity="0.5" FontStyle="Italic">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, 
+                                    ElementName=txtUserLastName}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBox Height="30" x:Name = "txtUserPhone" Style="{StaticResource TB}" 
+                         Margin ="10,117,10,0" VerticalAlignment="Top"/>
+                        <TextBlock x:Name="usrPhone" 
+                           Text="Номер телефону" IsHitTestVisible="False"
+                           FontSize="16" Margin="19,121,100,37" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           Opacity="0.5" FontStyle="Italic">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, 
+                                    ElementName=txtUserPhone}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
                     </Grid>
-                </Border>
 
-                <StackPanel Margin="50 100 50 0" VerticalAlignment="Top">
-                    <TextBlock Text="Card Details" Foreground="#F1C40F" FontWeight="SemiBold" FontSize="24" Margin="0 0 0 70"/>
 
-                    <TextBlock Text="Select Card Type" Style="{StaticResource titleText}"/>
-                    <Grid Margin="0 15 0 30">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Image Grid.Column="0" HorizontalAlignment="Left" Source="/Images/mastercard.png" Width="25" Style="{StaticResource icon}"/>
-                        <Image Grid.Column="1" HorizontalAlignment="Center" Source="/Images/visa.png" Width="25" Style="{StaticResource icon}"/>
-                        <Image Grid.Column="2" HorizontalAlignment="Right" Source="/Images/credit.png" Width="25" Style="{StaticResource icon}"/>
-                    </Grid>
-
-                    <TextBlock Text="Card Number" Style="{StaticResource titleText}"/>
-                    <TextBox Margin="0 5 0 30"/>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel>
-                            <TextBlock Text="Expire Date" Style="{StaticResource titleText}"/>
-                            <TextBox Margin="0 5 0 0"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="1" Margin="30 0 0 0" Width="50">
-                            <TextBlock Text="CVV" Style="{StaticResource titleText}"/>
-                            <TextBox Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Grid>
                 </StackPanel>
 
-                <Button Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,545,62,10"/>
+                <Button Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,296,62,10"/>
             </Grid>
-
-            <Frame Grid.Row="1"
-                       Name="ffContainer"
-                       Margin="20"
-                       NavigationUIVisibility="Hidden">
-            </Frame>
         </Grid>
     </Grid>
 </Page>

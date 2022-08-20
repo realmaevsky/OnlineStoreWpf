@@ -40,9 +40,9 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -59,7 +59,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="White"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -70,10 +70,10 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Helvetica"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <EventSetter Event="PasswordChanged" Handler="OnPasswordChanged"/>
             <Setter Property="Template">
@@ -91,7 +91,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="White"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -113,7 +113,7 @@
             <Grid Name="loginpassBoxes" Grid.Row="0">
                 <TextBox x:Name = "addNewLogin" Style="{StaticResource TB}" Margin ="68,36,67,0" VerticalAlignment="Top"/>
                 <TextBlock x:Name="lgnTxt" Text="Логін" IsHitTestVisible="False" FontSize="14" Margin="80,39,159,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource FirstTextColor}" Opacity="0.5" FontStyle="Italic">
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" Opacity="0.5" FontStyle="Italic">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>
@@ -128,11 +128,11 @@
 
                 <PasswordBox x:Name = "addNewPassword" Style="{StaticResource PB}" Margin ="68,72,67,0" VerticalAlignment="Top"/>
                 <TextBlock Name="Wmark" Text="Пароль" IsHitTestVisible="False" FontSize="14" Margin="76,75,149,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource FirstTextColor}" Opacity="0.5" FontStyle="Italic"/>
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" Opacity="0.5" FontStyle="Italic"/>
 
                 <TextBox x:Name="addNewAccessLevel" Style="{StaticResource TB}" Margin ="68,107,67,0" VerticalAlignment="Top"/>
                 <TextBlock Name="accLvlBx" Text="Рівень доступу" IsHitTestVisible="False" FontSize="14" Margin="76,110,95,0"
-                   VerticalAlignment="Top" Foreground="{DynamicResource FirstTextColor}" Opacity="0.5" FontStyle="Italic">
+                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" Opacity="0.5" FontStyle="Italic">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>

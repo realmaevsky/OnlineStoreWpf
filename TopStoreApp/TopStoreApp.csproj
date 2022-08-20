@@ -82,9 +82,6 @@
     <Compile Include="AddNewAcc.xaml.cs">
       <DependentUpon>AddNewAcc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Item.xaml.cs">
-      <DependentUpon>Item.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\MenuItem.xaml.cs">
       <DependentUpon>MenuItem.xaml</DependentUpon>
     </Compile>
@@ -98,6 +95,18 @@
     <Compile Include="Migrations\202208190704482_InitialCreate.cs" />
     <Compile Include="Migrations\202208190704482_InitialCreate.designer.cs">
       <DependentUpon>202208190704482_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208201609485_AddTotalCostMigration.cs" />
+    <Compile Include="Migrations\202208201609485_AddTotalCostMigration.designer.cs">
+      <DependentUpon>202208201609485_AddTotalCostMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208201617430_AddTotalCost1Migration.cs" />
+    <Compile Include="Migrations\202208201617430_AddTotalCost1Migration.designer.cs">
+      <DependentUpon>202208201617430_AddTotalCost1Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202208201657257_AddInotifyMigration.cs" />
+    <Compile Include="Migrations\202208201657257_AddInotifyMigration.designer.cs">
+      <DependentUpon>202208201657257_AddInotifyMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddUsers.xaml.cs">
@@ -130,10 +139,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Authorization.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +252,15 @@
     <EmbeddedResource Include="Migrations\202208190704482_InitialCreate.resx">
       <DependentUpon>202208190704482_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208201609485_AddTotalCostMigration.resx">
+      <DependentUpon>202208201609485_AddTotalCostMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208201617430_AddTotalCost1Migration.resx">
+      <DependentUpon>202208201617430_AddTotalCost1Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208201657257_AddInotifyMigration.resx">
+      <DependentUpon>202208201657257_AddInotifyMigration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -289,18 +303,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\add.png" />
-    <Resource Include="Images\close.png" />
-    <Resource Include="Images\credit.png" />
     <Resource Include="Images\left.png" />
     <Resource Include="Images\low.png" />
-    <Resource Include="Images\mastercard.png" />
-    <Resource Include="Images\mini.png" />
-    <Resource Include="Images\p1.png" />
-    <Resource Include="Images\p2.png" />
-    <Resource Include="Images\p3.png" />
-    <Resource Include="Images\p4.png" />
     <Resource Include="Images\remove.png" />
-    <Resource Include="Images\visa.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Res\Posters\buttonImg5.jpg" />

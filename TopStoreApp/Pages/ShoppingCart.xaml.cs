@@ -12,28 +12,68 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TopStoreApp.Data;
+using TopStoreApp.Pages;
+using System.Data.Entity;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace TopStoreApp.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для ShoppingCart.xaml
-    /// </summary>
     public partial class ShoppingCart : Page
     {
+        TopStoreDb db;
+
+        public static Order tempOrder = new Order();
+
+        public Product prodInOrder;
+
         public ShoppingCart()
         {
             InitializeComponent();
-        }
-        private void StackPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
-            {
-            }
+
+            db = new TopStoreDb();
+
+            listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
         }
 
         private void GoToProductPage_Click(object sender, RoutedEventArgs e)
         {
-            ffContainer.Navigate(new System.Uri("Pages/ProductPage.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("Pages/ProductPage.xaml", UriKind.Relative));
         }
+
+        private void Grid_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            var productInfo = (Grid)sender;
+
+            if (productInfo.DataContext is Product product)
+            {
+                prodInOrder = product;
+            }
+        }
+
+        private void addCounter_Click(object sender, RoutedEventArgs e)
+        {
+
+            //foreach (var phone in tempOrder.ProductsInOrder.Where(p => p.Model == prodInOrder.Model))
+            //{
+            //    phone.Count++;
+            //}
+            
+            prodInOrder.Count++;
+            
+
+        }
+
+        private void downCounter_Click(object sender, RoutedEventArgs e)
+        {
+            prodInOrder.Count--;
+            if (prodInOrder.Count > 1)
+                prodInOrder.Count--;
+            else
+                prodInOrder.Count = 1;
+        }
+
+
     }
 }

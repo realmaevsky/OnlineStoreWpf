@@ -30,14 +30,14 @@ namespace TopStoreApp.Pages
         {
             db = new TopStoreDb();
             db.AllManagers.Load();
-            AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            AllManagersDataGrid.ItemsSource = db.AllManagers.Local.ToBindingList();
         }
 
         private void RefreshBD()
         {
             AllManagersDataGrid.Items.Refresh();
             db.AllManagers.Load();
-            AllManagersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
+            AllManagersDataGrid.ItemsSource = db.AllManagers.Local.ToBindingList();
         }
 
         private void editManager_Click(object sender, RoutedEventArgs e)

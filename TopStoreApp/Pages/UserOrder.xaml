@@ -11,7 +11,9 @@
     <Border CornerRadius="30" Background="Transparent" 
                 BorderBrush="{DynamicResource AnotherBackgroundGradient}" BorderThickness="1">
         <Border.Effect>
-            <BlurEffect Radius="1"/>
+            <DropShadowEffect Direction="333" 
+                                  ShadowDepth="3" 
+                                  BlurRadius="5"/>
         </Border.Effect>
     </Border>
 </Page>

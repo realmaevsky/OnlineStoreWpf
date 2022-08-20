@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace TopStoreApp.Data
 {
-    public class Product
+    public class Product : INotifyPropertyChanged
     {
         public int Id { get; set; }
 
@@ -14,19 +17,49 @@ namespace TopStoreApp.Data
 
         public decimal Price { get; set; }
 
+        private decimal totalCost
+        {
+            get { return Price * Count; }
+        }
+
+
+        public decimal TotalCost
+        {
+            get { return totalCost; }
+        }
+
         public short Memory { get; set; }
 
         public bool InStock { get; set; }
 
         public string ImageSource { get; set; }
 
-        public int Count { get; set; }
+        private int _count;
+
+        public int Count
+        {
+            get { return _count; }
+            set
+            {
+                _count = value;
+                OnPropertyChanged("Price");
+            }
+
+        }
 
         public ICollection<Order> Ordr { get; set; }
 
         public Product()
         {
             Ordr = new List<Order>();
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

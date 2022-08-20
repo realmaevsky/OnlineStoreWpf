@@ -12,7 +12,6 @@ namespace TopStoreApp.Data
 
         public User Client { get; set; }
 
-
         private decimal totalPrice;
 
         public decimal TotalPrice 
@@ -25,7 +24,7 @@ namespace TopStoreApp.Data
             {
                 foreach (var item in ProductsInOrder)
                 {
-                    totalPrice += item.Price;
+                    totalPrice += item.Price * item.Count;
                 }                
             }
         }

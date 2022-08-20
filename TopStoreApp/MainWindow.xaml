@@ -81,7 +81,7 @@
                                 Click="btnAllProducts_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
                                            Icon="{DynamicResource products}" Foreground="{DynamicResource adminColor}"  IconWidth="16" 
-                                           Text="Всі products" VerticalAlignment="Center"/>
+                                           Text="Всі товари" VerticalAlignment="Center"/>
                         </Button>
                         
                         <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  
@@ -105,7 +105,7 @@
                                 Click="btnAddUser_Click">
                             <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
                                            Icon="{DynamicResource customers}" IconWidth="16" 
-                                           Text="Додати користувача" VerticalAlignment="Center"/>
+                                           Text="Всі користувачі" VerticalAlignment="Center"/>
                         </Button>
 
                         <!--Other menu buttons-->
