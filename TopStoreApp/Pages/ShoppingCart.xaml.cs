@@ -18,6 +18,12 @@ using System.Data.Entity;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.Remoting.Messaging;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace TopStoreApp.Pages
 {
@@ -29,19 +35,17 @@ namespace TopStoreApp.Pages
 
         public Product selectedProduct;
 
-        //public static ObservableCollection<Product> products = new ObservableCollection<Product>();
-
         public ShoppingCart()
         {
             InitializeComponent();
 
             db = new TopStoreDb();
-            //listViewOrder.ItemsSource = products;
+
             listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
 
             totalpriceBlock.DataContext = tempOrder;
-            //totalpriceBlock.Text = tempOrder.TotalPrice;
-            //totalcashlabel2.Content = tempOrder.TotalPrice;
+
+            
 
         }
 
@@ -65,7 +69,6 @@ namespace TopStoreApp.Pages
             selectedProduct.Count++;
             selectedProduct.TotalCost += selectedProduct.Price;
             tempOrder.TotalPrice += selectedProduct.Price;
-            // CheckTotalPrice();
         }
 
         private void downCounter_Click(object sender, RoutedEventArgs e)
@@ -84,7 +87,7 @@ namespace TopStoreApp.Pages
 
         }
 
-        private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
+        private async void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -92,27 +95,28 @@ namespace TopStoreApp.Pages
                 tempOrder.ClientLastName = txtUserLastName.Text;
                 tempOrder.ClientPhoneNumber = txtUserPhone.Text;
 
+                //>>>Асинхронная запись в файл<<<
+                
+
                 db.AllOrders.Add(tempOrder);
                 db.SaveChanges();
 
+                UserOrder.userOrdersCollection.Add(tempOrder);
 
+                MessageBox.Show("Ваше замовлення прийнято! Зараз буде згенеровано чек з інформацією про замовлення!");
+
+                await WriteOrderToFile(tempOrder);
 
                 tempOrder.ProductsInOrder.Clear();
+                tempOrder.TotalPrice = default;
 
-                MessageBox.Show($"Ім'я: {tempOrder.ClientFirstName}" + Environment.NewLine + $"Прізвище: {tempOrder.ClientLastName}"
-                + Environment.NewLine + $"Номер телефону: {tempOrder.ClientPhoneNumber}" + Environment.NewLine + $"Спосіб розрахунку: {tempOrder.PaymentMethod}"
-                + Environment.NewLine + $"Сума замовлення: {tempOrder.TotalPrice}" + Environment.NewLine + $"Дата створення замовлення: {tempOrder.OrderDate}"
-                + Environment.NewLine + $"Товари: {tempOrder.ProductsInOrder.First().Model.ToString()} {tempOrder.ProductsInOrder.First().Memory.ToString()} GB x " +
-                $"{tempOrder.ProductsInOrder.First().Count.ToString()} шт.");
+                this.NavigationService.Navigate(new Uri("Pages/StartPage.xaml", UriKind.Relative));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Неможливо створити замовлення, якщо кошик пустий!");
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Неможливо створити замовлення, якщо кошик пустий!");
             }
-
-
-            
-            
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
@@ -131,12 +135,17 @@ namespace TopStoreApp.Pages
             tempOrder.PaymentMethod = "Безготівковий розрахунок / Картка";
         }
 
-        private void CheckTotalPrice()
+        private async Task WriteOrderToFile(Order order)
         {
-            foreach (var item in tempOrder.ProductsInOrder)
+            var userOrderTxt = $"temp/{order.ClientLastName}_order_{order.Id}.txt";
+
+            using (FileStream stream = new FileStream(userOrderTxt, FileMode.OpenOrCreate, FileAccess.Write))
+            using (StreamWriter sw = new StreamWriter(stream))
             {
-                tempOrder.TotalPrice += item.TotalCost;
+                await sw.WriteLineAsync(order.ToString());
             }
+
+            Process.Start("notepad.exe",userOrderTxt);
         }
     }
 }

@@ -57,5 +57,18 @@ namespace TopStoreApp.Data
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Замовник: {ClientFirstName} {ClientLastName}\n" +
+                $"Номер телефону: {ClientPhoneNumber}\n" +
+                $"Дата замовлення: {OrderDate:G}\n" +
+                $"Тип оплати: {PaymentMethod}\n" +
+                $"Товари: \n");
+            sb.Append(string.Join("\n\n", ProductsInOrder));
+            sb.Append($"\n       Загальна вартість замовлення: {TotalPrice} грн.");
+            return sb.ToString();
+        }
     }
 }

@@ -44,6 +44,8 @@ namespace TopStoreApp.Pages
             if (_productInCard != null)
             {
                 _productInCard.Count++;
+                _productInCard.TotalCost += _productInCard.Price;
+                ShoppingCart.tempOrder.TotalPrice += _productInCard.Price;
             }
             else
             {

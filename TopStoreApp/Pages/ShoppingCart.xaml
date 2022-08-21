@@ -261,7 +261,7 @@
                                            Foreground="{DynamicResource AnotherBackgroundGradient}"/>
                         </StackPanel>
                     </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="344,0,0,0" Width="257">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="324,0,0,0" Width="257">
                         <TextBlock  Text="Загальна вартість: " FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
                         <TextBlock Name="totalpriceBlock"  Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, StringFormat={}{0} грн.}" 
                                    FontWeight="SemiBold" 
@@ -378,7 +378,7 @@
                 </StackPanel>
 
                 <Button Name="CreateOrderButton" 
-                        Content="Замовити" 
+                        Content="Оформити" 
                         FontSize="20" 
                         Style="{StaticResource customButton}" 
                         Margin="62,348,62,25" 

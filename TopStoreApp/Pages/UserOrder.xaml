@@ -8,12 +8,182 @@
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="UserOrder" >
 
-    <Border CornerRadius="30" Background="Transparent" 
+    <Grid>
+        <Border CornerRadius="30" Background="Transparent" 
                 BorderBrush="{DynamicResource AnotherBackgroundGradient}" BorderThickness="1">
-        <Border.Effect>
-            <DropShadowEffect Direction="333" 
+            <Border.Effect>
+                <DropShadowEffect Direction="333" 
                                   ShadowDepth="3" 
                                   BlurRadius="5"/>
-        </Border.Effect>
-    </Border>
+            </Border.Effect>
+        </Border>
+        <Grid>
+            <Grid Background="Transparent" Margin="0,10,0,0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="0 40 0 30">
+                    <TextBlock Text="TOP STORE" Foreground="{StaticResource AnotherBackgroundGradient}" FontSize="28" FontWeight="SemiBold" FontFamily="Candara Light" VerticalAlignment="Center" Margin="50 0 0 0"/>
+                    <Rectangle VerticalAlignment="Stretch" Fill="{StaticResource AnotherBackgroundGradient}" Width="0.7" Margin="20 5 20 5"/>
+                    <TextBlock 
+                        Text="Мої замовлення" 
+                        Foreground="{StaticResource AnotherBackgroundGradient}" 
+                        FontSize="26" 
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <ListView Name="listViewUserOrders" Grid.Row="1" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  Foreground="{StaticResource AnotherBackgroundGradient}"
+                  HorizontalContentAlignment="Center" 
+                  Margin="50,0,50,30" 
+                  Background="Transparent" BorderBrush="{x:Null}" DataContext="{Binding userOrdersCollection, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}" ItemsSource="{Binding userOrdersCollection, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Name="listGrid" Opacity="0.8"
+                                  HorizontalAlignment="Center">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+                                <Border  Background="{DynamicResource AnotherBackgroundGradient}" 
+                 CornerRadius="30" 
+                 Grid.ColumnSpan="6"
+                 BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                 BorderThickness="2"/>
+                                
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="0" 
+                   Text="ID Замовлення:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="-50 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="0" 
+                   Text="{Binding Id}"
+                   FontWeight="SemiBold" 
+                   FontSize="16" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="-50 40 0 0"/>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="1" 
+                   Text="Товари:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="-200 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="1" 
+                   Text="{Binding Model}"
+                   FontWeight="SemiBold" 
+                   FontSize="16" 
+                   Margin="-200 40 0 0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" DataContext="{Binding userOrdersCollection.ProductsInOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"/>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="2" 
+                   Text="Кількість:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="-280 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="2" 
+                   Text="{Binding userOrdersCollection.ProductsInOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="16"
+                   Margin="-280 -40 0 0"/>
+                                
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="3" 
+                   Text="Ціна:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   Margin="-400 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="3" 
+                   Text="{Binding userOrdersCollection.ProductsInOrder.Price, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontWeight="SemiBold" 
+                   FontSize="16"
+                   Margin="-400 40 0 0"/>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="4" 
+                   Text="Тип оплати:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   Margin="-450 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="4" 
+                   Text="{Binding PaymentMethod}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   Margin="-450 40 0 0"
+                   FontSize="16"/>
+                                
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="5" 
+                   Text="Дата замовлення:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Margin="-400 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="5" 
+                   Text="{Binding OrderDate, StringFormat={}{0:G}}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="11" 
+                   Margin="-400 40 0 0"/>
+
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Grid.Column="6" 
+                   Text="Загальна ціна:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"  
+                   Margin="-100 -38 0 0"/>
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="6" 
+                   Text="{Binding TotalPrice}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="11" 
+                   Margin="-100 40 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Grid>
 </Page>

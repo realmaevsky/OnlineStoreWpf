@@ -23,9 +23,16 @@ namespace TopStoreApp.Pages
     public partial class UserOrder : Page
     {
         TopStoreDb db;
+
+        public static List<Order> userOrdersCollection = new List<Order>();
+
         public UserOrder()
         {
             InitializeComponent();
+
+            db = new TopStoreDb();
+
+            listViewUserOrders.ItemsSource = userOrdersCollection;
 
         }
 

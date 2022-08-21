@@ -62,5 +62,11 @@ namespace TopStoreApp.Data
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
+
+        public override string ToString()
+        {
+            return $"{Model} {Memory} GB // {Count} шт.\n" +
+                $"Ціна за шт.: {Price} грн.\n";
+        }
     }
 }
