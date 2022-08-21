@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TopStoreApp.Pages"
+      xmlns:local="clr-namespace:TopStoreApp.Pages" xmlns:data="clr-namespace:TopStoreApp.Data"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="UserOrder" >
@@ -33,16 +33,17 @@
                         FontSize="26" 
                         VerticalAlignment="Center"/>
                 </StackPanel>
-
-                <ListView Name="listViewUserOrders" Grid.Row="1" 
+<Button Name="TestButton" Content="test button" Margin="814,40,131,30" Click="TestButton_Click" />
+                <ListView Name="userOrdersView" Grid.Row="1" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   Foreground="{StaticResource AnotherBackgroundGradient}"
                   HorizontalContentAlignment="Center" 
-                  Margin="50,0,50,30" 
-                  Background="Transparent" BorderBrush="{x:Null}" DataContext="{Binding userOrdersCollection, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}" ItemsSource="{Binding userOrdersCollection, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}">
+                  Margin="5,0,5,30" 
+                  Background="Transparent" BorderBrush="{x:Null}"
+                          ItemsSource="{Binding Source=userOrders}">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate >
-                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
@@ -67,7 +68,7 @@
                  Grid.ColumnSpan="6"
                  BorderBrush="{DynamicResource AnotherBackgroundGradient}"
                  BorderThickness="2"/>
-                                
+
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="0" 
                    Text="ID Замовлення:" 
@@ -93,14 +94,13 @@
                    Margin="-200 -38 0 0"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="1" 
-                   Text="{Binding Model}"
+                   Text="{Binding ProductsInOrder.Model, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
                    FontWeight="SemiBold" 
                    FontSize="16" 
                    Margin="-200 40 0 0"
                    VerticalAlignment="Center"
-                   HorizontalAlignment="Center" DataContext="{Binding userOrdersCollection.ProductsInOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"/>
-
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   HorizontalAlignment="Center"/>
+                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="2" 
                    Text="Кількість:" 
                    FontSize="11" 
@@ -109,13 +109,13 @@
                    Margin="-280 -38 0 0"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}"
                    Grid.Column="2" 
-                   Text="{Binding userOrdersCollection.ProductsInOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
+                   Text="{Binding ProductsInOrder.Count}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
                    FontWeight="SemiBold"
                    FontSize="16"
-                   Margin="-280 -40 0 0"/>
-                                
+                   Margin="-280 40 0 0"/>
+
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="3" 
                    Text="Ціна:" 
@@ -125,7 +125,7 @@
                    Margin="-400 -38 0 0"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}"
                    Grid.Column="3" 
-                   Text="{Binding userOrdersCollection.ProductsInOrder.Price, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}" 
+                   Text="{Binding Source=ProductsInOrder, Path=Price}" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontWeight="SemiBold" 
@@ -141,13 +141,13 @@
                    Margin="-450 -38 0 0"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}"
                    Grid.Column="4" 
-                   Text="{Binding PaymentMethod}"
+                   Text="{Binding Path=PaymentMethod}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
                    FontWeight="SemiBold"
                    Margin="-450 40 0 0"
                    FontSize="16"/>
-                                
+
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="5" 
                    Text="Дата замовлення:" 

@@ -195,7 +195,7 @@
                    Margin="0 38 0 0"/>
 
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="2" 
+                   Grid.Column="2"
                    Text="{Binding Price}"
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold"

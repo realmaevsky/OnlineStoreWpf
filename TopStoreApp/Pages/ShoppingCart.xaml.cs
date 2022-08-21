@@ -89,34 +89,45 @@ namespace TopStoreApp.Pages
 
         private async void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (tempOrder.ProductsInOrder.Count == 0)
             {
-                tempOrder.ClientFirstName = txtUserName.Text;
-                tempOrder.ClientLastName = txtUserLastName.Text;
-                tempOrder.ClientPhoneNumber = txtUserPhone.Text;
-
-                //>>>Асинхронная запись в файл<<<
-                
-
-                db.AllOrders.Add(tempOrder);
-                db.SaveChanges();
-
-                UserOrder.userOrdersCollection.Add(tempOrder);
-
-                MessageBox.Show("Ваше замовлення прийнято! Зараз буде згенеровано чек з інформацією про замовлення!");
-
-                await WriteOrderToFile(tempOrder);
-
-                tempOrder.ProductsInOrder.Clear();
-                tempOrder.TotalPrice = default;
-
-                this.NavigationService.Navigate(new Uri("Pages/StartPage.xaml", UriKind.Relative));
+                MessageBox.Show("Я не можу прийняти замовлення, якщо кошик пустий :(");
             }
-            catch (Exception ex)
+            else if(txtUserName.Text.Count() < 1 || txtUserLastName.Text.Count() < 1 || txtUserPhone.Text.Count() < 1)
             {
-                MessageBox.Show(ex.Message);
-                //MessageBox.Show("Неможливо створити замовлення, якщо кошик пустий!");
+                MessageBox.Show("Всі поля мають бути заповнені");
             }
+            else
+            {
+                try
+                {
+                    tempOrder.ClientFirstName = txtUserName.Text;
+                    tempOrder.ClientLastName = txtUserLastName.Text;
+                    tempOrder.ClientPhoneNumber = txtUserPhone.Text;
+
+                    UserOrder.userOrders.Add(tempOrder);
+                    UserOrder._userOrder = tempOrder;
+
+                    db.AllOrders.Add(tempOrder);
+                    db.SaveChanges();
+
+
+                    MessageBox.Show("Ваше замовлення прийнято! Зараз буде згенеровано чек з інформацією про замовлення!)");
+
+                    await WriteOrderToFile(tempOrder);
+
+                    tempOrder.ProductsInOrder.Clear();
+                    tempOrder.TotalPrice = default;
+
+                    this.NavigationService.Navigate(new Uri("Pages/StartPage.xaml", UriKind.Relative));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+            
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
@@ -132,7 +143,7 @@ namespace TopStoreApp.Pages
 
         private void cardRb_Checked(object sender, RoutedEventArgs e)
         {
-            tempOrder.PaymentMethod = "Безготівковий розрахунок / Картка";
+            tempOrder.PaymentMethod = "Оплата карткою";
         }
 
         private async Task WriteOrderToFile(Order order)

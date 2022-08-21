@@ -21,8 +21,6 @@ namespace TopStoreApp.Data
 
         public string PaymentMethod { get; set; }
 
-        public Manager ResponsibleMngr { get; set; }
-
         public DateTimeOffset OrderDate { get; set; }
 
         private decimal totalPrice;
@@ -40,8 +38,6 @@ namespace TopStoreApp.Data
                 OnPropertyChanged();
             }
         }
-
-        public bool IsCompleted { get; set; }
 
         public ICollection<Product> ProductsInOrder { get; set; }
 

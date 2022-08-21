@@ -238,10 +238,10 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
                     <Button Name="SortAllOrders" Width="110" Content="Всі замовлення" 
                             Style="{StaticResource tabButton}" Click="SortAllOrders_Click"/>
-                    <Button Name="SortInWorkOrders" Width="110" Content="В роботі" 
-                            Style="{StaticResource tabButton}" Click="SortInWorkOrders_Click"/>
-                    <Button Name="SortCompletedOrders" Width="110" Content="Виконані" 
-                            Style="{StaticResource tabButton}" Click="SortCompletedOrders_Click"/>
+                    <Button Name="SortCashPay" Width="110" Content="Готівкою" 
+                            Style="{StaticResource tabButton}" Click="SortCashPay_Click"/>
+                    <Button Name="SortCardPay" Width="110" Content="На картку" 
+                            Style="{StaticResource tabButton}" Click="SortCardPay_Click"/>
                 </StackPanel>
 
                 <DataGrid x:Name="AllOrdersDataGrid" Style="{DynamicResource DataGridStyle1}" 
@@ -279,8 +279,8 @@
                         <DataGridTextColumn Header="Повна вартість" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
                         <DataGridTextColumn Header="Client Name" IsReadOnly="True" Width="*" Binding="{Binding ClientMail}"/>
                         <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding User.PhoneNumber}"/>
-                        <DataGridTextColumn Header="Responsible Manager" IsReadOnly="True" Width="*" Binding="{Binding ResponsibleMngr}"/>
-                        <DataGridTextColumn Header="Is Completed" IsReadOnly="True" Width="*" Binding="{Binding IsCompleted}"/>
+                        <!--<DataGridTextColumn Header="Responsible Manager" IsReadOnly="True" Width="*" Binding="{Binding ResponsibleMngr}"/>
+                        <DataGridTextColumn Header="Is Completed" IsReadOnly="True" Width="*" Binding="{Binding IsCompleted}"/>-->
                         <DataGridTemplateColumn Header="Дії" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

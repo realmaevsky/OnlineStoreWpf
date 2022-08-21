@@ -57,14 +57,14 @@ namespace TopStoreApp.Pages
             AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
-        private void SortInWorkOrders_Click(object sender, RoutedEventArgs e)
+        private void SortCashPay_Click(object sender, RoutedEventArgs e)
         {
-            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.IsCompleted == false);
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.PaymentMethod == "Готівка");
         }
 
-        private void SortCompletedOrders_Click(object sender, RoutedEventArgs e)
+        private void SortCardPay_Click(object sender, RoutedEventArgs e)
         {
-            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.IsCompleted == true);
+            AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList().Where(ord => ord.PaymentMethod == "Оплата карткою");
         }
 
         private void RefreshData_Click(object sender, RoutedEventArgs e)
