@@ -3,8 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TopStoreApp.Pages" 
-      xmlns:data="clr-namespace:TopStoreApp.Data"
+      xmlns:local="clr-namespace:TopStoreApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="ShoppingCart">
@@ -44,27 +43,6 @@
             </Style.Triggers>
         </Style>
 
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="#d0d0d0" />
-            <Setter Property="FontSize" Value="12" />
-            <Setter Property="Padding" Value="0 5 0 5" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                        <Border x:Name="border" Background="Transparent" BorderThickness="0 0 0 1" BorderBrush="#e9e9e9" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="#F1C40F"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <Style x:Key="buttonDelete" TargetType="Button">
             <Setter Property="Width" Value="50" />
             <Setter Property="Template">
@@ -76,53 +54,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-
-        <Style x:Key="buttonCheckout" TargetType="Button">
-            <Setter Property="Background" Value="#F1C40F" />
-            <Setter Property="Foreground" Value="#262729" />
-            <Setter Property="Height" Value="70" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="VerticalAlignment" Value="Bottom" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#d1aa0a" />
-                    <Setter Property="Foreground" Value="#111111" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="titleText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="#e9e9e9" />
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-
-        <Style x:Key="buttonMini" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#666666" />
-                </Trigger>
-            </Style.Triggers>
         </Style>
 
         <Style x:Key="TB" TargetType="TextBox">
@@ -178,6 +109,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+
 
     </Page.Resources>
     <Grid>
@@ -317,7 +250,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Grid Grid.Row="2" Margin="80 40 150 40">
+                <Grid Grid.Row="2" Margin="80,40,93,40">
                     <Button Name="GoToProductPage" Foreground="{StaticResource FirstTextColor}" Style="{StaticResource buttonBack}" Click="GoToProductPage_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Images/left.png" Width="20" OpacityMask="{DynamicResource AnotherBackgroundGradient}"/>
@@ -328,13 +261,13 @@
                                            Foreground="{DynamicResource AnotherBackgroundGradient}"/>
                         </StackPanel>
                     </Button>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="344,0,0,0" Width="257">
                         <TextBlock  Text="Загальна вартість: " FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
-                        <TextBlock Name="totalpriceBlock"  Text="{Binding tempOrder.TotalPrice, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ShoppingCart}}, StringFormat=\{0\} грн.}" 
+                        <TextBlock Name="totalpriceBlock"  Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, StringFormat={}{0} грн.}" 
                                    FontWeight="SemiBold" 
                                    Foreground="{StaticResource AnotherBackgroundGradient}" 
                                    FontSize="16" 
-                                   Margin="0 0 70 0"/>
+                                   Margin="0 0 70 0" />
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -413,18 +346,7 @@
                         <TextBlock x:Name="payMethod" 
                            Text="Спосіб оплати: " IsHitTestVisible="False"
                            FontSize="16" Margin="19,166,100,91" Foreground="{DynamicResource AnotherBackgroundGradient}" 
-                           Opacity="0.5" FontStyle="Italic">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, ElementName=txtUserPhone}" Value="">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
+                           Opacity="0.5" FontStyle="Italic"/>
 
                         <RadioButton x:Name="cashRb" 
                                      Content="Готівка" 
@@ -455,7 +377,12 @@
 
                 </StackPanel>
 
-                <Button Name="CreateOrderButton" Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,348,62,25" Click="CreateOrderButton_Click"/>
+                <Button Name="CreateOrderButton" 
+                        Content="Замовити" 
+                        FontSize="20" 
+                        Style="{StaticResource customButton}" 
+                        Margin="62,348,62,25" 
+                        Click="CreateOrderButton_Click"/>
             </Grid>
         </Grid>
     </Grid>

@@ -71,7 +71,20 @@ namespace TopStoreApp
                 {
                     User loginUser = data.Accounts.Where((u) => u.Login == login && u.Password == password).Single();
 
-                    isLogin = true;
+                    if ((userLogin.Text == "") || (userPassword.Password == ""))
+                    {
+                        if (userLogin.Text == "")
+                        {
+                            MessageBox.Show("Ви не ввели логін!", "Авторизація", MessageBoxButton.OK);
+                            userLogin.Focus();
+                        }
+                        else if (userPassword.Password == "")
+                        {
+                            MessageBox.Show("Ви не ввели пароль!", "Авторизація", MessageBoxButton.OK);
+                            userPassword.Focus();
+                        }
+                    }
+                        isLogin = true;
 
 
                     authorizeButton.Background = Brushes.LimeGreen;

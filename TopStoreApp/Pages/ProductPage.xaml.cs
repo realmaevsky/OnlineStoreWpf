@@ -39,10 +39,19 @@ namespace TopStoreApp.Pages
             if(currentProduct == null)
                 currentProduct = (listViewPhones.SelectedItem as Product);
 
-            ShoppingCart.tempOrder.ProductsInOrder.Add(currentProduct);
-            //ShoppingCart.products.Add(currentProduct);
+            var _productInCard = ShoppingCart.tempOrder.ProductsInOrder.ToList().Find(prod => prod.Id == currentProduct.Id);
 
-            //MessageBox.Show($"{currentProduct.Model} додано до кошика.");
+            if (_productInCard != null)
+            {
+                _productInCard.Count++;
+            }
+            else
+            {
+                ShoppingCart.tempOrder.ProductsInOrder.Add(currentProduct);
+                ShoppingCart.tempOrder.TotalPrice += currentProduct.Price;
+            }
+            
+            MessageBox.Show($"{currentProduct.Model} додано до кошика.");
 
             this.NavigationService.Navigate(new Uri("Pages/ShoppingCart.xaml", UriKind.Relative));
         }

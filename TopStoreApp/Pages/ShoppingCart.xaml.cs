@@ -29,35 +29,20 @@ namespace TopStoreApp.Pages
 
         public Product selectedProduct;
 
-        public static ObservableCollection<Product> products = new ObservableCollection<Product>();
-
-        //private decimal _totalPriceInOrder;
-
-        //public decimal TotalPriceInOrder
-        //{
-        //    get { return _totalPriceInOrder; }
-        //    set 
-        //    {
-        //        foreach (var item in tempOrder.ProductsInOrder)
-        //        {
-        //            _totalPriceInOrder += item.TotalCost;
-        //        }
-        //    }
-        //}
-
+        //public static ObservableCollection<Product> products = new ObservableCollection<Product>();
 
         public ShoppingCart()
         {
             InitializeComponent();
 
             db = new TopStoreDb();
-
-            tempOrder.TotalPrice = default;
-
             //listViewOrder.ItemsSource = products;
             listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
 
-            CheckTotalPrice();
+            totalpriceBlock.DataContext = tempOrder;
+            //totalpriceBlock.Text = tempOrder.TotalPrice;
+            //totalcashlabel2.Content = tempOrder.TotalPrice;
+
         }
 
         private void GoToProductPage_Click(object sender, RoutedEventArgs e)
@@ -78,9 +63,9 @@ namespace TopStoreApp.Pages
         private void addCounter_Click(object sender, RoutedEventArgs e)
         {
             selectedProduct.Count++;
-            selectedProduct.TotalCost = selectedProduct.Price * selectedProduct.Count;
-
-            CheckTotalPrice();
+            selectedProduct.TotalCost += selectedProduct.Price;
+            tempOrder.TotalPrice += selectedProduct.Price;
+            // CheckTotalPrice();
         }
 
         private void downCounter_Click(object sender, RoutedEventArgs e)
@@ -101,18 +86,39 @@ namespace TopStoreApp.Pages
 
         private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            //tempOrder.ClientFirstName = txtUserName.Text;
-            //tempOrder.ClientLastName = txtUserLastName.Text;
-            //tempOrder.ClientPhoneNumber = txtUserPhone.Text;
+            try
+            {
+                tempOrder.ClientFirstName = txtUserName.Text;
+                tempOrder.ClientLastName = txtUserLastName.Text;
+                tempOrder.ClientPhoneNumber = txtUserPhone.Text;
 
-            //db.AllOrders.Add(tempOrder);
-            //db.SaveChanges();
+                db.AllOrders.Add(tempOrder);
+                db.SaveChanges();
+
+
+
+                tempOrder.ProductsInOrder.Clear();
+
+                MessageBox.Show($"Ім'я: {tempOrder.ClientFirstName}" + Environment.NewLine + $"Прізвище: {tempOrder.ClientLastName}"
+                + Environment.NewLine + $"Номер телефону: {tempOrder.ClientPhoneNumber}" + Environment.NewLine + $"Спосіб розрахунку: {tempOrder.PaymentMethod}"
+                + Environment.NewLine + $"Сума замовлення: {tempOrder.TotalPrice}" + Environment.NewLine + $"Дата створення замовлення: {tempOrder.OrderDate}"
+                + Environment.NewLine + $"Товари: {tempOrder.ProductsInOrder.First().Model.ToString()} {tempOrder.ProductsInOrder.First().Memory.ToString()} GB x " +
+                $"{tempOrder.ProductsInOrder.First().Count.ToString()} шт.");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Неможливо створити замовлення, якщо кошик пустий!");
+            }
+
+
+            
+            
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            //products.Remove(selectedProduct);
             tempOrder.ProductsInOrder.Remove(selectedProduct);
+            tempOrder.TotalPrice -= selectedProduct.TotalCost;
         }
 
         private void cashRb_Checked(object sender, RoutedEventArgs e)

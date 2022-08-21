@@ -23,35 +23,32 @@ namespace TopStoreApp.Data
 
         public Manager ResponsibleMngr { get; set; }
 
+        public DateTimeOffset OrderDate { get; set; }
+
         private decimal totalPrice;
 
-        public decimal TotalPrice 
-        { 
+        public decimal TotalPrice
+        {
             get
             {
                 return totalPrice;
             }
             set
             {
-                //foreach (var item in ProductsInOrder)
-                //{
-                //    totalPrice += item.TotalCost;
-                //}
-
                 totalPrice = ProductsInOrder.Sum(t => t.TotalCost);
-
                 //totalPrice = value;
                 OnPropertyChanged();
             }
         }
 
-        public bool IsCompleted { get; set; }   
+        public bool IsCompleted { get; set; }
 
         public ICollection<Product> ProductsInOrder { get; set; }
 
         public Order()
         {
             ProductsInOrder = new ObservableCollection<Product>();
+            this.OrderDate = DateTimeOffset.Now.LocalDateTime;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

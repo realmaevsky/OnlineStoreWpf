@@ -120,6 +120,10 @@
     <Compile Include="Migrations\202208210251379_EditBaseMigration.designer.cs">
       <DependentUpon>202208210251379_EditBaseMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208210519325_AddInOrderDateTimeMigration.cs" />
+    <Compile Include="Migrations\202208210519325_AddInOrderDateTimeMigration.designer.cs">
+      <DependentUpon>202208210519325_AddInOrderDateTimeMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddUsers.xaml.cs">
       <DependentUpon>AddUsers.xaml</DependentUpon>
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208210251379_EditBaseMigration.resx">
       <DependentUpon>202208210251379_EditBaseMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208210519325_AddInOrderDateTimeMigration.resx">
+      <DependentUpon>202208210519325_AddInOrderDateTimeMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
