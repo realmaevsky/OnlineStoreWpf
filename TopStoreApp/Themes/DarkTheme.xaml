@@ -14,6 +14,7 @@
     <SolidColorBrush x:Key="FirstBackgroundColor" Color="#FF112629"/>
     <SolidColorBrush x:Key="SecondBackgroundColor" Color="#FF8E2C7A"/>
     <SolidColorBrush x:Key="ThirdBackgroundColor" Color="#FF5A1B4C"/>
+    <SolidColorBrush x:Key="FourthBackGroundColor" Color="Black"/>
 
     <SolidColorBrush x:Key="ThirdColor" Color="#FF90D5EC"/>
     <SolidColorBrush x:Key="SideMenuColor" Color="LightGray" Opacity="0.3"/>

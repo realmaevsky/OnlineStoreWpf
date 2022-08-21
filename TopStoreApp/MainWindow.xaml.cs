@@ -4,12 +4,14 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using TopStoreApp.Data;
+using System.Collections;
 
 namespace TopStoreApp
 {
     public partial class MainWindow : Window
     {
         TopStoreDb db;
+
         public MainWindow()
         {
             db = new TopStoreDb();
@@ -22,7 +24,7 @@ namespace TopStoreApp
             InitializeComponent();
 
                 fContainer.Navigate(new System.Uri("Pages/StartPage.xaml", UriKind.RelativeOrAbsolute));
-            
+
         }
 
         private void newTables()

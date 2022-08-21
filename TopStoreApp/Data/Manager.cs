@@ -15,8 +15,6 @@ namespace TopStoreApp.Data
             get { return 900 + Id; }
         }
 
-        public User AccountInfo { get; set; }
-
         public string WorkName { get { return "Manager" + ManagerID; } }
 
         public bool Online { get; set; }

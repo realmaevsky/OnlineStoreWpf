@@ -13,7 +13,15 @@ namespace TopStoreApp.Data
     {
         public int Id { get; set; }
 
-        public User Client { get; set; }
+        public string ClientFirstName { get; set; }
+
+        public string ClientLastName { get; set; }
+
+        public string ClientPhoneNumber { get; set; }
+
+        public string PaymentMethod { get; set; }
+
+        public Manager ResponsibleMngr { get; set; }
 
         private decimal totalPrice;
 
@@ -25,15 +33,17 @@ namespace TopStoreApp.Data
             }
             set
             {
-                foreach (var item in ProductsInOrder)
-                {
-                    totalPrice += item.Price * item.Count;
-                    OnPropertyChanged("TotalPrice");
-                }                
+                //foreach (var item in ProductsInOrder)
+                //{
+                //    totalPrice += item.TotalCost;
+                //}
+
+                totalPrice = ProductsInOrder.Sum(t => t.TotalCost);
+
+                //totalPrice = value;
+                OnPropertyChanged();
             }
         }
-
-        public Manager ResponsibleMngr { get; set; }
 
         public bool IsCompleted { get; set; }   
 
@@ -41,7 +51,7 @@ namespace TopStoreApp.Data
 
         public Order()
         {
-            ProductsInOrder = new List<Product>();
+            ProductsInOrder = new ObservableCollection<Product>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

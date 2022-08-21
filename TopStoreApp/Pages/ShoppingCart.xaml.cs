@@ -27,21 +27,37 @@ namespace TopStoreApp.Pages
 
         public static Order tempOrder = new Order();
 
-        public Product prodInOrder;
+        public Product selectedProduct;
 
-        //public static ObservableCollection<Product> products = new ObservableCollection<Product>();
+        public static ObservableCollection<Product> products = new ObservableCollection<Product>();
 
+        //private decimal _totalPriceInOrder;
+
+        //public decimal TotalPriceInOrder
+        //{
+        //    get { return _totalPriceInOrder; }
+        //    set 
+        //    {
+        //        foreach (var item in tempOrder.ProductsInOrder)
+        //        {
+        //            _totalPriceInOrder += item.TotalCost;
+        //        }
+        //    }
+        //}
 
 
         public ShoppingCart()
         {
             InitializeComponent();
 
-
             db = new TopStoreDb();
 
-            //listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
-            listViewOrder.ItemsSource = tempOrder.ProductsInOrder.ToList();
+            tempOrder.TotalPrice = default;
+
+            //listViewOrder.ItemsSource = products;
+            listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
+
+            CheckTotalPrice();
         }
 
         private void GoToProductPage_Click(object sender, RoutedEventArgs e)
@@ -55,39 +71,66 @@ namespace TopStoreApp.Pages
 
             if (productInfo.DataContext is Product product)
             {
-                prodInOrder = product;
+                selectedProduct = product;
             }
         }
 
         private void addCounter_Click(object sender, RoutedEventArgs e)
         {
+            selectedProduct.Count++;
+            selectedProduct.TotalCost = selectedProduct.Price * selectedProduct.Count;
 
-            //foreach (var phone in tempOrder.ProductsInOrder.Where(p => p.Model == prodInOrder.Model))
-            //{
-            //    phone.Count++;
-            //}
-            
-            prodInOrder.Count++;
-            
-
+            CheckTotalPrice();
         }
 
         private void downCounter_Click(object sender, RoutedEventArgs e)
         {
-            if (prodInOrder.Count > 1)
-                prodInOrder.Count--;
+            if (selectedProduct.Count > 1)
+            {
+                selectedProduct.Count--;
+                selectedProduct.TotalCost -= selectedProduct.Price;
+                tempOrder.TotalPrice -= selectedProduct.Price;
+            }
             else
-                prodInOrder.Count = 1;
+            {
+                selectedProduct.Count = 1;
+                selectedProduct.TotalCost = selectedProduct.Price;
+            }
+
         }
 
         private void CreateOrderButton_Click(object sender, RoutedEventArgs e)
         {
+            //tempOrder.ClientFirstName = txtUserName.Text;
+            //tempOrder.ClientLastName = txtUserLastName.Text;
+            //tempOrder.ClientPhoneNumber = txtUserPhone.Text;
 
+            //db.AllOrders.Add(tempOrder);
+            //db.SaveChanges();
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
         {
+            //products.Remove(selectedProduct);
+            tempOrder.ProductsInOrder.Remove(selectedProduct);
+        }
 
+        private void cashRb_Checked(object sender, RoutedEventArgs e)
+        {
+            tempOrder.PaymentMethod = "Готівка";
+        }
+
+        private void cardRb_Checked(object sender, RoutedEventArgs e)
+        {
+            tempOrder.PaymentMethod = "Безготівковий розрахунок / Картка";
+        }
+
+        private void CheckTotalPrice()
+        {
+            foreach (var item in tempOrder.ProductsInOrder)
+            {
+                tempOrder.TotalPrice += item.TotalCost;
+            }
         }
     }
 }

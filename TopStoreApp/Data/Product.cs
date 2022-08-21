@@ -17,15 +17,15 @@ namespace TopStoreApp.Data
 
         public decimal Price { get; set; }
 
-        private decimal totalCost;
+        private decimal _totalCost;
 
         public decimal TotalCost
         {
-            get { return totalCost; }
-            set 
-            { 
-                totalCost = Price * Count;
-                OnPropertyChanged("TotalCost");
+            get { return _totalCost; }
+            set
+            {
+                _totalCost = value;
+                OnPropertyChanged();
             }
         }
 
@@ -43,7 +43,7 @@ namespace TopStoreApp.Data
             set
             {
                 _count = value;
-                OnPropertyChanged("Count");
+                OnPropertyChanged();
             }
 
         }
@@ -52,7 +52,7 @@ namespace TopStoreApp.Data
 
         public Product()
         {
-            Ordr = new List<Order>();
+            Ordr = new ObservableCollection<Order>();
         }
 
 

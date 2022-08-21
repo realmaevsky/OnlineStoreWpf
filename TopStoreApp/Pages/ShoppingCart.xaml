@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TopStoreApp.Pages"
+      xmlns:local="clr-namespace:TopStoreApp.Pages" 
+      xmlns:data="clr-namespace:TopStoreApp.Data"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="ShoppingCart">
@@ -240,15 +241,6 @@
                                          Width="80">
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform"/>
                                 </Border>
-                                <!--<Ellipse Stroke ="{DynamicResource BackgroundGradient}" 
-                                         Height="80" 
-                                         Width="80" 
-                                         Margin="25 10 0 10" 
-                                         HorizontalAlignment="Left">
-                                    <Ellipse.Fill>
-                                        <ImageBrush Stretch="Uniform" ImageSource="/img/iphone-x.png"/>
-                                    </Ellipse.Fill>
-                                </Ellipse>-->
 
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="1" 
@@ -288,7 +280,12 @@
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold" 
                    FontSize="16"/>
-
+                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                   Grid.Column="5" 
+                   Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}"
+                   VerticalAlignment="Center" 
+                   FontWeight="SemiBold"
+                   FontSize="16"/>
                                 <StackPanel Grid.Column="4" 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Left">
@@ -303,12 +300,6 @@
 
                                 </StackPanel>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="5" 
-                   Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}"
-                   VerticalAlignment="Center" 
-                   FontWeight="SemiBold"
-                   FontSize="16"/>
                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
                    Grid.Column="5" 
                    Text="Загальна ціна:" 
@@ -326,7 +317,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-
                 <Grid Grid.Row="2" Margin="80 40 150 40">
                     <Button Name="GoToProductPage" Foreground="{StaticResource FirstTextColor}" Style="{StaticResource buttonBack}" Click="GoToProductPage_Click">
                         <StackPanel Orientation="Horizontal">
@@ -339,8 +329,8 @@
                         </StackPanel>
                     </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <TextBlock Text="Загальна вартість:" FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
-                        <TextBlock Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0} грн.}" 
+                        <TextBlock  Text="Загальна вартість: " FontSize="16" Foreground="{StaticResource AnotherBackgroundGradient}"/>
+                        <TextBlock Name="totalpriceBlock"  Text="{Binding tempOrder.TotalPrice, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:ShoppingCart}}, StringFormat=\{0\} грн.}" 
                                    FontWeight="SemiBold" 
                                    Foreground="{StaticResource AnotherBackgroundGradient}" 
                                    FontSize="16" 
@@ -352,32 +342,30 @@
             <Grid Grid.Column="1" 
                   Background="Transparent" 
                   Opacity="0.7" 
-                  Margin="0,114,0,159">
+                  Margin="0,108,0,100">
                 <Grid.Effect>
                     <DropShadowEffect ShadowDepth="10" BlurRadius="50"/>
                 </Grid.Effect>
 
-                <Border CornerRadius="30"
+                <Border CornerRadius="30" Background="{DynamicResource FourthBackGroundColor}" Opacity="0.2"
                         BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
                         BorderThickness="2"/>
 
-                <StackPanel Margin="25,25,25,0" VerticalAlignment="Top" Height="276">
-                    <TextBlock Text="Деталі замовлення" Foreground="{DynamicResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24" Margin="0 0 0 70"/>
-
-                    <Grid Name="UserOrderInfo" Height="184">
-                        <TextBox Height="30" x:Name = "txtUserName" Style="{StaticResource TB}" 
-                         Margin ="10,17,10,0" VerticalAlignment="Top"/>
+                <StackPanel Margin="25,25,25,0" VerticalAlignment="Top" Height="377">
+                    <TextBlock Text="Деталі замовлення" Foreground="{DynamicResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24"/>
+                    <Grid x:Name="UserOrderInfo" Height="315">
+                        <TextBox Height="NaN" x:Name = "txtUserName" Style="{StaticResource TB}" 
+                         Margin ="10,17,10,268"/>
                         <TextBlock x:Name="usrName" Height="20" 
                            Text="Ім'я" IsHitTestVisible="False"
                            FontSize="16" Margin="19,21,202,0" 
                    VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
-                           Opacity="0.5" FontStyle="Italic">
+                           Opacity="0.8" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, 
-                                    ElementName=txtUserName}" Value="">
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtUserName}" Value="">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -391,13 +379,12 @@
                            Text="Прізвище" IsHitTestVisible="False"
                            FontSize="16" Margin="19,71,153,0" 
                    VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
-                           Opacity="0.5" FontStyle="Italic">
+                           Opacity="0.8" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, 
-                                    ElementName=txtUserLastName}" Value="">
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtUserLastName}" Value="">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -409,14 +396,29 @@
                          Margin ="10,117,10,0" VerticalAlignment="Top"/>
                         <TextBlock x:Name="usrPhone" 
                            Text="Номер телефону" IsHitTestVisible="False"
-                           FontSize="16" Margin="19,121,100,37" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           FontSize="16" Margin="19,121,100,168" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           Opacity="0.8" FontStyle="Italic">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtUserPhone}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+
+                        </TextBlock>
+                        <TextBlock x:Name="payMethod" 
+                           Text="Спосіб оплати: " IsHitTestVisible="False"
+                           FontSize="16" Margin="19,166,100,91" Foreground="{DynamicResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, 
-                                    ElementName=txtUserPhone}" Value="">
+                                        <DataTrigger Binding="{Binding Text, ElementName=txtUserPhone}" Value="">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -424,12 +426,36 @@
                             </TextBlock.Style>
                         </TextBlock>
 
+                        <RadioButton x:Name="cashRb" 
+                                     Content="Готівка" 
+                                     FontSize="18"
+                                     Foreground="{DynamicResource AnotherBackgroundGradient}"
+                                     Margin="19,195,153,96" 
+                                     BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                                     Background="{DynamicResource BackgroundGradient}" 
+                                     Checked="cashRb_Checked" 
+                                     HorizontalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center" 
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Center"/>
+                        <RadioButton x:Name="cardRb" 
+                                     Content="Карткою" 
+                                     FontSize="18"
+                                     Foreground="{DynamicResource AnotherBackgroundGradient}"
+                                     Margin="19,218,0,0" 
+                                     BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                                     Background="{DynamicResource BackgroundGradient}" 
+                                     Checked="cardRb_Checked" 
+                                     HorizontalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center" 
+                                     VerticalAlignment="Top" 
+                                     HorizontalAlignment="Left" Height="29"/>
                     </Grid>
 
 
                 </StackPanel>
 
-                <Button Name="CreateOrderButton" Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,296,62,10" Click="CreateOrderButton_Click"/>
+                <Button Name="CreateOrderButton" Content="Замовити" FontSize="20" Style="{StaticResource customButton}" Margin="62,348,62,25" Click="CreateOrderButton_Click"/>
             </Grid>
         </Grid>
     </Grid>
