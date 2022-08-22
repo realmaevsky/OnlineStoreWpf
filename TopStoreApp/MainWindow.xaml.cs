@@ -12,10 +12,12 @@ namespace TopStoreApp
     {
         TopStoreDb db;
 
+        public static User loginedUser = new User();
+
         public MainWindow()
         {
             db = new TopStoreDb();
-            //newTables();
+
 
             //new StartLoading().ShowDialog();
 
@@ -23,7 +25,7 @@ namespace TopStoreApp
 
             InitializeComponent();
 
-                fContainer.Navigate(new System.Uri("Pages/StartPage.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("Pages/StartPage.xaml", UriKind.RelativeOrAbsolute));
 
         }
 
@@ -83,18 +85,18 @@ namespace TopStoreApp
             Popup.IsOpen = false;
         }
 
-        private void btnMyProfile_MouseEnter(object sender, MouseEventArgs e)
+        private void btnAllCustomers_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnMyProfile;
+                Popup.PlacementTarget = btnAllCustomers;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Мій профіль";
+                Header.PopupText.Text = "Всі замовники";
             }
         }
 
-        private void btnMyProfile_MouseLeave(object sender, MouseEventArgs e)
+        private void btnAllCustomers_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -124,7 +126,7 @@ namespace TopStoreApp
                 Popup.PlacementTarget = btnAllProducts;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Всі products";
+                Header.PopupText.Text = "Всі товари";
             }
         }
 
@@ -175,7 +177,7 @@ namespace TopStoreApp
                 Popup.PlacementTarget = btnAddUser;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Додати користувача";
+                Header.PopupText.Text = "Всі користувачі";
             }
         }
 
@@ -217,9 +219,9 @@ namespace TopStoreApp
             fContainer.Navigate(new System.Uri("Pages/ShoppingCart.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void btnMyProfile_Click(object sender, RoutedEventArgs e)
+        private void btnAllCustomers_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Profile.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("Pages/AllCustomers.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnMyOrders_Click(object sender, RoutedEventArgs e)

@@ -32,7 +32,7 @@ namespace TopStoreApp.Themes
         private static void ChangeTheme(Uri uri)
         {
             ThemeDictionary = new ResourceDictionary() { Source = uri };
-            
+
         }
 
         public static void SetTheme(ThemeTypes theme)
@@ -43,7 +43,7 @@ namespace TopStoreApp.Themes
             switch (theme)
             {
                 case ThemeTypes.Light: themeName = "LightTheme"; break;
-                case ThemeTypes.Dark:  themeName = "DarkTheme"; break;
+                case ThemeTypes.Dark: themeName = "DarkTheme"; break;
             }
 
             try
@@ -54,7 +54,7 @@ namespace TopStoreApp.Themes
                     ChangeTheme(new Uri($"Themes/{themeName}.xaml", UriKind.Relative));
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }

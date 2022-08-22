@@ -18,7 +18,7 @@
         
         <ProgressBar Name="loadBar" Height="70" Width="486"
                      Minimum="0" Maximum="15" Value="0"
-                     Background="Transparent" Foreground="{DynamicResource BackgroundGradient}" 
+                     Background="Transparent" Foreground="{StaticResource BackgroundGradient}" 
                      BorderBrush="Black" BorderThickness="2" VerticalAlignment="Top" Margin="32,122,32,0"/>
     </Border>
         

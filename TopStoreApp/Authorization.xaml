@@ -39,10 +39,10 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="Foreground" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Opacity" Value="0.7"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -59,10 +59,10 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <!--<Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource pageBrushColor}"/>
                             </Trigger>-->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource pageBrushColor}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -73,10 +73,10 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="Foreground" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Opacity" Value="0.7"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <EventSetter Event="PasswordChanged" Handler="OnPasswordChanged"/>
             <Setter Property="Template">
@@ -94,7 +94,7 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource pageBrushColor}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -112,7 +112,7 @@
             </Grid.RowDefinitions>
 
 
-            <Border Background="{DynamicResource BackgroundGradient}" 
+            <Border Background="{StaticResource BackgroundGradient}" 
                     CornerRadius="30" Opacity ="0.9" Grid.RowSpan="4"/>
 
             <Grid Name="ToolBar" Grid.Row="0">
@@ -158,13 +158,13 @@
 
             <StackPanel Grid.Row="1" VerticalAlignment="Center" 
                         MouseDown="Authorization_OnMouseDown">
-                <Image Source="res/img/whitelogo.png" Width="138" Height="127" 
+                <Image Source="res/img/logo.png" Width="138" Height="127" 
                        Opacity="0.7"/>
                 <TextBlock Text="TOP STORE"
                            FontWeight="Light"
                            FontFamily="helvetica"
                            FontSize="25"
-                           Foreground="{DynamicResource FirstTextColor}"
+                           Foreground="{StaticResource AnotherBackgroundGradient}"
                            Opacity="0.7"
                            Height="28" Width="124"
                            Margin="8,0,0,0"/>
@@ -177,11 +177,11 @@
                                                 VerticalAlignment="Bottom"
                                                 Margin="285,0,0,105"
                                                 Opacity="0.6"
-                                                Foreground="{DynamicResource AnotherBackgroundGradient}"/>
+                                                Foreground="{StaticResource AnotherBackgroundGradient}"/>
                 <TextBlock x:Name="lgnTxt" Height="30" 
                            Text="Ім'я користувача" IsHitTestVisible="False"
                            FontSize="20" Margin="82,52,134,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                   VerticalAlignment="Top" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -202,13 +202,13 @@
                 <TextBlock Name="Wmark" Text="Пароль"  Height="30" 
                            IsHitTestVisible="False" FontSize="20" 
                            Margin="83,106,229,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                   VerticalAlignment="Top" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic"/>
                 <iconPacks:PackIconMaterial Kind="EyeOff" 
                                                 VerticalAlignment="Bottom" 
                                                 Margin="286,0,0,51"
                                                 Opacity="0.6"
-                                                Foreground="{DynamicResource AnotherBackgroundGradient}"/>
+                                                Foreground="{StaticResource AnotherBackgroundGradient}"/>
 
             </Grid>
 

@@ -68,8 +68,8 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style x:Key="addButton" TargetType="Button">
-            <Setter Property="Background" Value="{DynamicResource SecondBackgroundColor}"/>
-            <Setter Property="Foreground" Value="{DynamicResource ThirdTextColor}"/>
+            <Setter Property="Background" Value="{StaticResource SecondBackgroundColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource ThirdTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="35"/>
@@ -90,15 +90,15 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+                    <Setter Property="Background" Value="{StaticResource ThirdBackgroundColor}"/>
+                    <Setter Property="Foreground" Value="{StaticResource FirstTextColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="tabButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource FirstTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Width" Value="70"/>
             <Setter Property="Height" Value="45"/>
@@ -121,14 +121,14 @@
                     <Setter Property="BorderBrush" Value="#784ff2"/>
                 </Trigger>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="{DynamicResource brdrBrushColor}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource brdrBrushColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="pagingButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource ThirdTextColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource ThirdTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Margin" Value="1 0"/>
@@ -137,7 +137,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="5"
                                 Padding="10 5"
-                                BorderThickness="0 0 0 1" BorderBrush="{DynamicResource pageBrushColor}">
+                                BorderThickness="0 0 0 1" BorderBrush="{StaticResource pageBrushColor}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
                                               Margin="0 0 0 1"/>
                         </Border>
@@ -204,7 +204,7 @@
 
     </Page.Resources>
 
-    <Border CornerRadius="30"  BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1">
+    <Border CornerRadius="30"  BorderBrush="{StaticResource pageBrushColor}" BorderThickness="1">
         <Border.Effect>
             <BlurEffect Radius="1"/>
         </Border.Effect>
@@ -224,7 +224,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Всі замовлення" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
-                           HorizontalAlignment="Left" Foreground="{DynamicResource FirstTextColor}"/>
+                           HorizontalAlignment="Left" Foreground="{StaticResource FirstTextColor}"/>
                 
                 <Button Name ="RefreshData" Style="{StaticResource addButton}" Margin="0,24,10,4" Grid.Row="1" Width="81" Click="RefreshData_Click">
                     <StackPanel Orientation="Horizontal">
@@ -244,17 +244,17 @@
                             Style="{StaticResource tabButton}" Click="SortCardPay_Click"/>
                 </StackPanel>
 
-                <DataGrid x:Name="AllOrdersDataGrid" Style="{DynamicResource DataGridStyle1}" 
-                            CellStyle="{DynamicResource DataGridCellStyle1}"
-                            ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                             RowStyle="{DynamicResource DataGridRowStyle1}" 
+                <DataGrid x:Name="AllOrdersDataGrid" Style="{StaticResource DataGridStyle1}" 
+                            CellStyle="{StaticResource DataGridCellStyle1}"
+                            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}" 
+                             RowStyle="{StaticResource DataGridRowStyle1}" 
                           Grid.Row="5"
                           Margin="0,35,0,0">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource CheckBoxStyle1}" CanUserResize="False" Width="auto" >
+                        <DataGridCheckBoxColumn ElementStyle="{StaticResource CheckBoxStyle1}" CanUserResize="False" Width="auto" >
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
-                                    <CheckBox Style="{DynamicResource CheckBoxStyle1}"/>
+                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
                                 </DataTemplate>
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
@@ -262,33 +262,22 @@
                         <DataGridTextColumn Header="Id" IsReadOnly="True" 
                                             CanUserResize="False" Width="auto"
                                             Binding="{Binding Id}"/>
-                        <DataGridTemplateColumn Header="Товари" IsReadOnly="True" Width="*">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border CornerRadius="50" 
-                                                Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock Text="{Binding ProductsInOrder}" VerticalAlignment="Center"
-                                                       HorizontalAlignment="Center" Foreground="{DynamicResource ThirdTextColor}"
-                                                       Margin="0 0 0 1"/>
-                                        </Border>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Повна вартість" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
-                        <DataGridTextColumn Header="Client Name" IsReadOnly="True" Width="*" Binding="{Binding ClientMail}"/>
-                        <DataGridTextColumn Header="Phone Number" IsReadOnly="True" Width="*" Binding="{Binding User.PhoneNumber}"/>
-                        <!--<DataGridTextColumn Header="Responsible Manager" IsReadOnly="True" Width="*" Binding="{Binding ResponsibleMngr}"/>
-                        <DataGridTextColumn Header="Is Completed" IsReadOnly="True" Width="*" Binding="{Binding IsCompleted}"/>-->
+                        <DataGridTextColumn Header="Загальна вартість" IsReadOnly="True" Width="*" Binding="{Binding TotalPrice}"/>
+                        <DataGridTextColumn Header="Ім'я клієнта" 
+                                            IsReadOnly="True" 
+                                            Width="*" 
+                                            Binding="{Binding ClientFirstName}"/>
+                        <DataGridTextColumn Header="Прізвище клієнта" 
+                                            IsReadOnly="True" 
+                                            Width="*" 
+                                            Binding="{Binding ClientLastName}"/>
+                        <DataGridTextColumn Header="Номер телефону" IsReadOnly="True" Width="*" Binding="{Binding ClientPhoneNumber}"/>
+                        <DataGridTextColumn Header="Дата замовлення" IsReadOnly="True" Width="*" Binding="{Binding OrderDate,StringFormat={}{0:G}}"/>
+                        <DataGridTextColumn Header="Спосіб оплати" IsReadOnly="True" Width="*" Binding="{Binding PaymentMethod}"/>
                         <DataGridTemplateColumn Header="Дії" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Name="editOrder" Style="{StaticResource gridEditButton}" Click="editOrder_Click">
-                                            <icon:PackIconMaterial Kind="PencilOutline"
-                                                                   Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
                                         <Button Name="deleteOrder" Style="{StaticResource gridRemoveButton}" Click="deleteOrder_Click">
                                             <icon:PackIconMaterial Kind="DeleteOutline" 
                                                                    Style="{StaticResource gridButtonIcon}"

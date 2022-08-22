@@ -60,9 +60,9 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="Foreground" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource AnotherBackgroundGradient}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AnotherBackgroundGradient}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -79,10 +79,10 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <!--<Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource pageBrushColor}"/>
                             </Trigger>-->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="{DynamicResource pageBrushColor}"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource pageBrushColor}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -115,7 +115,7 @@
     </Page.Resources>
     <Grid>
         <Border CornerRadius="30"
-                BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                BorderBrush="{StaticResource AnotherBackgroundGradient}"
                 Grid.ColumnSpan="2"/>
         <Grid>
 
@@ -164,10 +164,10 @@
                                     <ColumnDefinition Width="110"/>
                                     <ColumnDefinition Width="50"/>
                                 </Grid.ColumnDefinitions>
-                                <Border  Background="{DynamicResource AnotherBackgroundGradient}" 
+                                <Border  Background="{StaticResource AnotherBackgroundGradient}" 
                  CornerRadius="30" 
                  Grid.ColumnSpan="6"
-                 BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                 BorderBrush="{StaticResource AnotherBackgroundGradient}"
                  BorderThickness="2"/>
                                 <Border Grid.Column="0"
                                         Height="80" 
@@ -175,45 +175,45 @@
                                     <Image Source="{Binding ImageSource}" Stretch="Uniform"/>
                                 </Border>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="1" 
                    Text="Товар:" 
                    FontSize="11" 
                    VerticalAlignment="Center" 
                    Margin="0 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="1" 
                    Text="{Binding Model}"
                    FontWeight="SemiBold" 
                    FontSize="16" 
                    VerticalAlignment="Center"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="1" 
                    Text="{Binding Memory,StringFormat={}{0} GB}" 
                    FontSize="11" 
                    VerticalAlignment="Center" 
                    Margin="0 38 0 0"/>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}"
                    Grid.Column="2"
                    Text="{Binding Price}"
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold"
                    FontSize="16"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="2" 
                    Text="Ціна:" 
                    FontSize="11" 
                    VerticalAlignment="Center" 
                    Margin="0 -38 0 0"/>
 
-                                <TextBlock x:Name="countTxtBlock" Foreground="{DynamicResource BackgroundGradient}"
+                                <TextBlock x:Name="countTxtBlock" Foreground="{StaticResource BackgroundGradient}"
                    Grid.Column="3" 
                    Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" 
                    VerticalAlignment="Center" 
                    FontWeight="SemiBold" 
                    FontSize="16"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}"
                    Grid.Column="5" 
                    Text="{Binding TotalCost, UpdateSourceTrigger=PropertyChanged}"
                    VerticalAlignment="Center" 
@@ -233,7 +233,7 @@
 
                                 </StackPanel>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="5" 
                    Text="Загальна ціна:" 
                    FontSize="11" 
@@ -253,12 +253,12 @@
                 <Grid Grid.Row="2" Margin="80,40,93,40">
                     <Button Name="GoToProductPage" Foreground="{StaticResource FirstTextColor}" Style="{StaticResource buttonBack}" Click="GoToProductPage_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Images/left.png" Width="20" OpacityMask="{DynamicResource AnotherBackgroundGradient}"/>
+                            <Image Source="/Images/left.png" Width="20" OpacityMask="{StaticResource AnotherBackgroundGradient}"/>
                             <TextBlock Text="Повернутись до товарів" 
                                            VerticalAlignment="Center" 
                                            Margin="15 0 0 0" 
                                            Width="178"
-                                           Foreground="{DynamicResource AnotherBackgroundGradient}"/>
+                                           Foreground="{StaticResource AnotherBackgroundGradient}"/>
                         </StackPanel>
                     </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="324,0,0,0" Width="257">
@@ -280,19 +280,19 @@
                     <DropShadowEffect ShadowDepth="10" BlurRadius="50"/>
                 </Grid.Effect>
 
-                <Border CornerRadius="30" Background="{DynamicResource FourthBackGroundColor}" Opacity="0.2"
-                        BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
+                <Border CornerRadius="30" Background="{StaticResource FourthBackGroundColor}" Opacity="0.2"
+                        BorderBrush="{StaticResource AnotherBackgroundGradient}" 
                         BorderThickness="2"/>
 
                 <StackPanel Margin="25,25,25,0" VerticalAlignment="Top" Height="377">
-                    <TextBlock Text="Деталі замовлення" Foreground="{DynamicResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24"/>
+                    <TextBlock Text="Деталі замовлення" Foreground="{StaticResource AnotherBackgroundGradient}" FontWeight="SemiBold" FontSize="24"/>
                     <Grid x:Name="UserOrderInfo" Height="315">
                         <TextBox Height="NaN" x:Name = "txtUserName" Style="{StaticResource TB}" 
                          Margin ="10,17,10,268"/>
                         <TextBlock x:Name="usrName" Height="20" 
                            Text="Ім'я" IsHitTestVisible="False"
                            FontSize="16" Margin="19,21,202,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                   VerticalAlignment="Top" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.8" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -311,7 +311,7 @@
                         <TextBlock x:Name="usrLastName" Height="20" 
                            Text="Прізвище" IsHitTestVisible="False"
                            FontSize="16" Margin="19,71,153,0" 
-                   VerticalAlignment="Top" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                   VerticalAlignment="Top" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.8" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -329,7 +329,7 @@
                          Margin ="10,117,10,0" VerticalAlignment="Top"/>
                         <TextBlock x:Name="usrPhone" 
                            Text="Номер телефону" IsHitTestVisible="False"
-                           FontSize="16" Margin="19,121,100,168" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           FontSize="16" Margin="19,121,100,168" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.8" FontStyle="Italic">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -345,16 +345,16 @@
                         </TextBlock>
                         <TextBlock x:Name="payMethod" 
                            Text="Спосіб оплати: " IsHitTestVisible="False"
-                           FontSize="16" Margin="19,166,100,91" Foreground="{DynamicResource AnotherBackgroundGradient}" 
+                           FontSize="16" Margin="19,166,100,91" Foreground="{StaticResource AnotherBackgroundGradient}" 
                            Opacity="0.5" FontStyle="Italic"/>
 
                         <RadioButton x:Name="cashRb" 
                                      Content="Готівка" 
                                      FontSize="18"
-                                     Foreground="{DynamicResource AnotherBackgroundGradient}"
+                                     Foreground="{StaticResource AnotherBackgroundGradient}"
                                      Margin="19,195,153,96" 
-                                     BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
-                                     Background="{DynamicResource BackgroundGradient}" 
+                                     BorderBrush="{StaticResource AnotherBackgroundGradient}" 
+                                     Background="{StaticResource BackgroundGradient}" 
                                      Checked="cashRb_Checked" 
                                      HorizontalContentAlignment="Center" 
                                      VerticalContentAlignment="Center" 
@@ -363,10 +363,10 @@
                         <RadioButton x:Name="cardRb" 
                                      Content="Карткою" 
                                      FontSize="18"
-                                     Foreground="{DynamicResource AnotherBackgroundGradient}"
+                                     Foreground="{StaticResource AnotherBackgroundGradient}"
                                      Margin="19,218,0,0" 
-                                     BorderBrush="{DynamicResource AnotherBackgroundGradient}" 
-                                     Background="{DynamicResource BackgroundGradient}" 
+                                     BorderBrush="{StaticResource AnotherBackgroundGradient}" 
+                                     Background="{StaticResource BackgroundGradient}" 
                                      Checked="cardRb_Checked" 
                                      HorizontalContentAlignment="Center" 
                                      VerticalContentAlignment="Center" 

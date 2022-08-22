@@ -8,8 +8,8 @@
       d:DesignHeight="620" d:DesignWidth="1080"
       Title="Start Page">
     <Grid>
-        <Border CornerRadius="30" Background="{DynamicResource BackgroundGradient}" 
-                BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1">
+        <Border CornerRadius="30" Background="{StaticResource BackgroundGradient}" 
+                BorderBrush="{StaticResource pageBrushColor}" BorderThickness="1">
             <Border.Effect>
                 <BlurEffect Radius="1"/>
             </Border.Effect>

@@ -43,7 +43,7 @@ namespace TopStoreApp.Data
 
         public Order()
         {
-            ProductsInOrder = new ObservableCollection<Product>();
+            ProductsInOrder = new List<Product>();
             this.OrderDate = DateTimeOffset.Now.LocalDateTime;
         }
 

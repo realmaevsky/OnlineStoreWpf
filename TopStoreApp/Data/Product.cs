@@ -52,7 +52,7 @@ namespace TopStoreApp.Data
 
         public Product()
         {
-            Ordr = new ObservableCollection<Order>();
+            Ordr = new List<Order>();
         }
 
 

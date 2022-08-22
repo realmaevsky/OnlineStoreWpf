@@ -10,7 +10,7 @@
 
     <Grid>
         <Border CornerRadius="30" Background="Transparent" 
-                BorderBrush="{DynamicResource AnotherBackgroundGradient}" BorderThickness="1">
+                BorderBrush="{StaticResource AnotherBackgroundGradient}" BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect Direction="333" 
                                   ShadowDepth="3" 
@@ -33,7 +33,99 @@
                         FontSize="26" 
                         VerticalAlignment="Center"/>
                 </StackPanel>
-<Button Name="TestButton" Content="test button" Margin="814,40,131,30" Click="TestButton_Click" />
+
+                <!--<ListView Name="usrOrders" Grid.Row="1" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  Foreground="{StaticResource AnotherBackgroundGradient}"
+                  HorizontalContentAlignment="Center" 
+                  Margin="0,0,0,115" 
+                  Background="Transparent" BorderBrush="{x:Null}" Grid.RowSpan="2">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate >
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Name="list2Grid" Opacity="0.8" 
+                                  Margin="0 15 0 0" 
+                                  HorizontalAlignment="Center">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="250"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="150"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+                                <Border  Background="{StaticResource AnotherBackgroundGradient}" 
+                 CornerRadius="30" 
+                 Grid.ColumnSpan="7"
+                 BorderBrush="{StaticResource AnotherBackgroundGradient}"
+                 BorderThickness="2"/>
+
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="0" 
+                   Text="ID Замовлення:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="0" 
+                   Text="{Binding Id}"
+                   FontWeight="SemiBold" 
+                   FontSize="16" 
+                   VerticalAlignment="Center"/>
+
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="2" 
+                   Text="Товари:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
+                                <TextBlock DataContext="{Binding _userOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
+                                           Foreground="{StaticResource BackgroundGradient}"
+                   Grid.Column="2"
+                   Text="{Binding Model, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}, UpdateSourceTrigger=PropertyChanged}"
+                   VerticalAlignment="Center"
+                   FontWeight="SemiBold"
+                   FontSize="16"/>
+
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="3" 
+                   Text="Кількість:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center" 
+                   Margin="0 -38 0 0"/>
+                                <TextBlock DataContext="{Binding _userOrder, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
+                                           Foreground="{StaticResource BackgroundGradient}"
+                   Grid.Column="3" 
+                   Text="{Binding Count,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}, UpdateSourceTrigger=PropertyChanged}" 
+                   VerticalAlignment="Center" 
+                   FontWeight="SemiBold" 
+                   FontSize="16"/>
+                                
+                                <StackPanel Grid.Column="4" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+
+                                </StackPanel>
+
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="5" 
+                   Text="Загальна ціна:" 
+                   FontSize="11" 
+                   VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+                
                 <ListView Name="userOrdersView" Grid.Row="1" 
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   Foreground="{StaticResource AnotherBackgroundGradient}"
@@ -49,13 +141,11 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Name="listGrid" Opacity="0.8"
-                                  HorizontalAlignment="Center">
+                                  HorizontalAlignment="Left">
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="100"/>
                                     <ColumnDefinition Width="250"/>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="150"/>
                                     <ColumnDefinition Width="150"/>
                                     <ColumnDefinition Width="150"/>
                                 </Grid.ColumnDefinitions>
@@ -63,84 +153,36 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="150"/>
                                 </Grid.RowDefinitions>
-                                <Border  Background="{DynamicResource AnotherBackgroundGradient}" 
+                                <Border  Background="{StaticResource AnotherBackgroundGradient}" 
                  CornerRadius="30" 
                  Grid.ColumnSpan="6"
-                 BorderBrush="{DynamicResource AnotherBackgroundGradient}"
+                 BorderBrush="{StaticResource AnotherBackgroundGradient}"
                  BorderThickness="2"/>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="0" 
                    Text="ID Замовлення:" 
                    FontSize="11" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Margin="-50 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Margin="20 -38 0 0"/>
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="0" 
                    Text="{Binding Id}"
                    FontWeight="SemiBold" 
                    FontSize="16" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   Margin="-50 40 0 0"/>
-
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="1" 
-                   Text="Товари:" 
-                   FontSize="11" 
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Margin="-200 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="1" 
-                   Text="{Binding ProductsInOrder.Model, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:UserOrder}}}"
-                   FontWeight="SemiBold" 
-                   FontSize="16" 
-                   Margin="-200 40 0 0"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-                                 <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
+                   Margin="20 40 0 0"/>
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
                    Grid.Column="2" 
-                   Text="Кількість:" 
-                   FontSize="11" 
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Margin="-280 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="2" 
-                   Text="{Binding ProductsInOrder.Count}"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center" 
-                   FontWeight="SemiBold"
-                   FontSize="16"
-                   Margin="-280 40 0 0"/>
-
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="3" 
-                   Text="Ціна:" 
-                   FontSize="11" 
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center" 
-                   Margin="-400 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="3" 
-                   Text="{Binding Source=ProductsInOrder, Path=Price}" 
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontWeight="SemiBold" 
-                   FontSize="16"
-                   Margin="-400 40 0 0"/>
-
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="4" 
                    Text="Тип оплати:" 
                    FontSize="11" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
                    Margin="-450 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="4" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}"
+                   Grid.Column="2" 
                    Text="{Binding Path=PaymentMethod}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
@@ -148,15 +190,15 @@
                    Margin="-450 40 0 0"
                    FontSize="16"/>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="5" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="3" 
                    Text="Дата замовлення:" 
                    FontSize="11" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Margin="-400 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="5" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}"
+                   Grid.Column="3" 
                    Text="{Binding OrderDate, StringFormat={}{0:G}}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
@@ -164,16 +206,16 @@
                    FontSize="11" 
                    Margin="-400 40 0 0"/>
 
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}" 
-                   Grid.Column="6" 
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}" 
+                   Grid.Column="3" 
                    Text="Загальна ціна:" 
                    FontSize="11" 
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"  
                    Margin="-100 -38 0 0"/>
-                                <TextBlock Foreground="{DynamicResource BackgroundGradient}"
-                   Grid.Column="6" 
-                   Text="{Binding TotalPrice}"
+                                <TextBlock Foreground="{StaticResource BackgroundGradient}"
+                   Grid.Column="3" 
+                   Text="{Binding Path=TotalPrice}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" 
                    FontWeight="SemiBold"

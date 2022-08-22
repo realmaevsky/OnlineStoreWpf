@@ -90,6 +90,9 @@ namespace TopStoreApp
                     authorizeButton.Background = Brushes.LimeGreen;
                     authorizeButton.Opacity = 0.6;
                     authorizeButton.Content = "Успішно!";
+
+                    MainWindow.loginedUser = loginUser;
+
                     MessageBox.Show("Авторизація пройшла успішно!", "Авторизація", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }

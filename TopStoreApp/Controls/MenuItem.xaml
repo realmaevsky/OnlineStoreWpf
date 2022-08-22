@@ -8,7 +8,7 @@
     <UserControl.Resources>
         <Style x:Key="IndicatorStyle" TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="0 5 5 0"/>
-            <Setter Property="Background" Value="{DynamicResource ThirdColor}"/>
+            <Setter Property="Background" Value="{StaticResource ThirdColor}"/>
             <Setter Property="Visibility" Value="Hidden"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Width" Value="4"/>
@@ -19,34 +19,34 @@
                     RelativeSource={RelativeSource Mode=FindAncestor, 
                     AncestorType=ToggleButton}}" Value="True">
                     <Setter Property="Visibility" Value="Visible"/>
-                    <Setter Property="Background" Value="{DynamicResource FourthTextColor}"/>
+                    <Setter Property="Background" Value="{StaticResource FourthTextColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource 
                     Mode=FindAncestor, AncestorType=ToggleButton}}" Value="True">
                     <Setter Property="Visibility" Value="Visible"/>
-                    <Setter Property="Background" Value="{DynamicResource ThirdColor}"/>
+                    <Setter Property="Background" Value="{StaticResource ThirdColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
         
         <Style x:Key="MenuIconStyle" TargetType="{x:Type Path}">
-            <Setter Property="Fill" Value="{DynamicResource SecondIconColor}"/>
+            <Setter Property="Fill" Value="{StaticResource SecondIconColor}"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseOver, 
                     RelativeSource={RelativeSource Mode=FindAncestor, 
                     AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Fill" Value="{DynamicResource FourthTextColor}"/>
+                    <Setter Property="Fill" Value="{StaticResource FourthTextColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, 
                     RelativeSource={RelativeSource Mode=FindAncestor, 
                     AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Fill" Value="{DynamicResource ThirdColor}"/>
+                    <Setter Property="Fill" Value="{StaticResource ThirdColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
         
         <Style x:Key="MenuTextStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{DynamicResource SecondIconColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource SecondIconColor}"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Regular"/>
@@ -55,12 +55,12 @@
                 <DataTrigger Binding="{Binding IsMouseOver, 
                     RelativeSource={RelativeSource Mode=FindAncestor,
                     AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource FourthTextColor}"/>
+                    <Setter Property="Foreground" Value="{StaticResource FourthTextColor}"/>
                 </DataTrigger>
                 <DataTrigger Binding="{Binding IsChecked, 
                     RelativeSource={RelativeSource Mode=FindAncestor, 
                     AncestorType=ToggleButton}}" Value="True">
-                    <Setter Property="Foreground" Value="{DynamicResource ThirdColor}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ThirdColor}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>

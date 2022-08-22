@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -75,7 +76,9 @@ namespace TopStoreApp.Pages
 
         private void deleteProductButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Кнопка не працює...");
+            db.AllProducts.Remove((Product)ProductsDataGrid.SelectedItem);
+            db.SaveChanges();
+            MessageBox.Show("Товар успішно видалений");
             RefreshBD();
         }
     }

@@ -88,10 +88,8 @@
     <Compile Include="Controls\UserPopup.xaml.cs">
       <DependentUpon>UserPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\Customer.cs" />
     <Compile Include="Data\Product.cs" />
-    <Compile Include="EditUser.xaml.cs">
-      <DependentUpon>EditUser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202208190704482_InitialCreate.cs" />
     <Compile Include="Migrations\202208190704482_InitialCreate.designer.cs">
       <DependentUpon>202208190704482_InitialCreate.cs</DependentUpon>
@@ -128,18 +126,22 @@
     <Compile Include="Migrations\202208211609564_EditOrderData1Migration.designer.cs">
       <DependentUpon>202208211609564_EditOrderData1Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208221321174_AddCustomers.cs" />
+    <Compile Include="Migrations\202208221321174_AddCustomers.designer.cs">
+      <DependentUpon>202208221321174_AddCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddUsers.xaml.cs">
       <DependentUpon>AddUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AllCustomers.xaml.cs">
+      <DependentUpon>AllCustomers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AllOrdersInfo.xaml.cs">
       <DependentUpon>AllOrdersInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AllProducts.xaml.cs">
       <DependentUpon>AllProducts.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Profile.xaml.cs">
-      <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ShoppingCart.xaml.cs">
       <DependentUpon>ShoppingCart.xaml</DependentUpon>
@@ -170,11 +172,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditUser.xaml">
+    <Page Include="Pages\AddUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddUsers.xaml">
+    <Page Include="Pages\AllCustomers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,10 +197,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ManagerInfo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208211609564_EditOrderData1Migration.resx">
       <DependentUpon>202208211609564_EditOrderData1Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208221321174_AddCustomers.resx">
+      <DependentUpon>202208221321174_AddCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

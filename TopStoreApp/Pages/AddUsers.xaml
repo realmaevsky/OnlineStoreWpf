@@ -68,8 +68,8 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <Style x:Key="addButton" TargetType="Button">
-            <Setter Property="Background" Value="{DynamicResource SecondBackgroundColor}"/>
-            <Setter Property="Foreground" Value="{DynamicResource ThirdTextColor}"/>
+            <Setter Property="Background" Value="{StaticResource SecondBackgroundColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource ThirdTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="35"/>
@@ -90,15 +90,15 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{DynamicResource ThirdBackgroundColor}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+                    <Setter Property="Background" Value="{StaticResource ThirdBackgroundColor}"/>
+                    <Setter Property="Foreground" Value="{StaticResource FirstTextColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="tabButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource FirstTextColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource FirstTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Width" Value="70"/>
             <Setter Property="Height" Value="45"/>
@@ -121,14 +121,14 @@
                     <Setter Property="BorderBrush" Value="#784ff2"/>
                 </Trigger>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="{DynamicResource brdrBrushColor}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource brdrBrushColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="pagingButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="{DynamicResource ThirdTextColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource ThirdTextColor}"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Margin" Value="1 0"/>
@@ -137,7 +137,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="5"
                                 Padding="10 5"
-                                BorderThickness="0 0 0 1" BorderBrush="{DynamicResource pageBrushColor}">
+                                BorderThickness="0 0 0 1" BorderBrush="{StaticResource pageBrushColor}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
                                               Margin="0 0 0 1"/>
                         </Border>
@@ -204,7 +204,7 @@
 
     </Page.Resources>
 
-    <Border CornerRadius="30"  BorderBrush="{DynamicResource pageBrushColor}" BorderThickness="1">
+    <Border CornerRadius="30"  BorderBrush="{StaticResource pageBrushColor}" BorderThickness="1">
         <Border.Effect>
             <BlurEffect Radius="1"/>
         </Border.Effect>
@@ -224,7 +224,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="Користувачі" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
-                           HorizontalAlignment="Left" Foreground="{DynamicResource FirstTextColor}"/>
+                           HorizontalAlignment="Left" Foreground="{StaticResource FirstTextColor}"/>
 
                 <Button Style="{StaticResource addButton}" Click="Button_Click" Margin="0,24,10,4" Grid.Row="1" Width="164">
                     <StackPanel Orientation="Horizontal">
@@ -245,17 +245,17 @@
                             Style="{StaticResource tabButton}" Click="SortAdmins_Click"/>
                 </StackPanel>
 
-                <DataGrid x:Name="usersDataGrid" Style="{DynamicResource DataGridStyle1}" 
-                            CellStyle="{DynamicResource DataGridCellStyle1}"
-                            ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                             RowStyle="{DynamicResource DataGridRowStyle1}" 
+                <DataGrid x:Name="usersDataGrid" Style="{StaticResource DataGridStyle1}" 
+                            CellStyle="{StaticResource DataGridCellStyle1}"
+                            ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}" 
+                             RowStyle="{StaticResource DataGridRowStyle1}" 
                           Grid.Row="5"
                           Margin="0,35,0,0">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn ElementStyle="{DynamicResource CheckBoxStyle1}" CanUserResize="False" Width="auto" >
+                        <DataGridCheckBoxColumn ElementStyle="{StaticResource CheckBoxStyle1}" CanUserResize="False" Width="auto" >
                             <DataGridCheckBoxColumn.HeaderTemplate>
                                 <DataTemplate>
-                                    <CheckBox Style="{DynamicResource CheckBoxStyle1}"/>
+                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
                                 </DataTemplate>
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
@@ -270,7 +270,7 @@
                                         <Border CornerRadius="50" 
                                                 Margin="0 0 10 0" Background="{Binding BgColor}">
                                             <TextBlock Text="{Binding Login}" VerticalAlignment="Center"
-                                                       HorizontalAlignment="Center" Foreground="{DynamicResource ThirdTextColor}"
+                                                       HorizontalAlignment="Center" Foreground="{StaticResource ThirdTextColor}"
                                                        Margin="0 0 0 1"/>
                                         </Border>
                                     </StackPanel>
@@ -285,10 +285,6 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Name="editUserButton" Style="{StaticResource gridEditButton}" Click="editUserButton_Click">
-                                            <icon:PackIconMaterial Kind="PencilOutline"
-                                                                   Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
                                         <Button Name="deleteUserButton" Style="{StaticResource gridRemoveButton}" Click="deleteUserButton_Click">
                                             <icon:PackIconMaterial Kind="DeleteOutline" 
                                                                    Style="{StaticResource gridButtonIcon}"

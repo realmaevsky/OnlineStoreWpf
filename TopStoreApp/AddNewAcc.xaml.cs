@@ -28,25 +28,24 @@ namespace TopStoreApp
             {
                 try
                 {
-                    var createdAcc = new User();
-                    createdAcc.Login = addNewLogin.Text;
-                    createdAcc.Password = addNewPassword.Password;
-                    createdAcc.AccessLevel = Convert.ToInt32(addNewAccessLevel.Text);
+                    var createdAcc = db.Accounts.FirstOrDefault(u => u.PhoneNumber == addNewLogin.Text);
 
-                    //if (createdAcc.AccessLevel == 1)
-                    //{
-                    //    var createdMngr = new Manager();
-                    //    createdMngr.AccountInfo = new User();
-                    //    createdMngr.AccountInfo.Login = createdAcc.Login;
-                    //    createdMngr.AccountInfo.Password = createdAcc.Password;
-                    //    createdMngr.AccountInfo.AccessLevel = createdAcc.AccessLevel;
-                    //    db.AllManagers.Add(createdMngr);
-                    //}
+                    if (createdAcc == null)
+                    {
+                        createdAcc = new User();
+                        createdAcc.Login = addNewLogin.Text;
+                        createdAcc.Password = addNewPassword.Password;
+                        createdAcc.AccessLevel = Convert.ToInt32(addNewAccessLevel.Text);
 
-                    db.Accounts.Add(createdAcc);
+                        db.Accounts.Add(createdAcc);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такий користувач вже існує");
+                    }
+
                     db.SaveChanges();
-                    MessageBox.Show($"Новий користувач [{addNewLogin.Text}] успішно створений!", "Створення користувача", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
+
                     this.Close();
                 }
                 catch

@@ -26,6 +26,7 @@ namespace TopStoreApp.Pages
         {
             InitializeComponent();
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             db = new TopStoreDb();
@@ -40,15 +41,11 @@ namespace TopStoreApp.Pages
             AllOrdersDataGrid.ItemsSource = db.AllOrders.Local.ToBindingList();
         }
 
-        private void editOrder_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Кнопка не працює...");
-            RefreshBD();
-        }
-
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Кнопка не працює...");
+            db.AllOrders.Remove((Order)AllOrdersDataGrid.SelectedItem);
+            db.SaveChanges();
+            MessageBox.Show("Замовлення успішно видалене");
             RefreshBD();
         }
 

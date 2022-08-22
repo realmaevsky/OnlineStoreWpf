@@ -44,9 +44,6 @@ namespace TopStoreApp.Pages
             listViewOrder.ItemsSource = tempOrder.ProductsInOrder;
 
             totalpriceBlock.DataContext = tempOrder;
-
-            
-
         }
 
         private void GoToProductPage_Click(object sender, RoutedEventArgs e)
@@ -93,7 +90,7 @@ namespace TopStoreApp.Pages
             {
                 MessageBox.Show("Я не можу прийняти замовлення, якщо кошик пустий :(");
             }
-            else if(txtUserName.Text.Count() < 1 || txtUserLastName.Text.Count() < 1 || txtUserPhone.Text.Count() < 1)
+            else if (txtUserName.Text.Count() < 1 || txtUserLastName.Text.Count() < 1 || txtUserPhone.Text.Count() < 1)
             {
                 MessageBox.Show("Всі поля мають бути заповнені");
             }
@@ -105,12 +102,36 @@ namespace TopStoreApp.Pages
                     tempOrder.ClientLastName = txtUserLastName.Text;
                     tempOrder.ClientPhoneNumber = txtUserPhone.Text;
 
-                    UserOrder.userOrders.Add(tempOrder);
-                    UserOrder._userOrder = tempOrder;
+                    UserOrder.userOrders.Add(new Order()
+                    {
+                        Id = tempOrder.Id,
+                        ClientFirstName = tempOrder.ClientFirstName,
+                        ClientLastName = tempOrder.ClientLastName,
+                        ClientPhoneNumber = tempOrder.ClientPhoneNumber,
+                        ProductsInOrder = tempOrder.ProductsInOrder,
+                        TotalPrice = tempOrder.TotalPrice,
+                        PaymentMethod = tempOrder.PaymentMethod,
+                    });
 
                     db.AllOrders.Add(tempOrder);
-                    db.SaveChanges();
 
+                    var customer = db.AllCustomers.FirstOrDefault(x => x.PhoneNumber == tempOrder.ClientPhoneNumber);
+
+                    if (customer == null)
+                    {
+                        customer = new Customer();
+                        customer.FirstName = tempOrder.ClientFirstName;
+                        customer.LastName = tempOrder.ClientLastName;
+                        customer.PhoneNumber = tempOrder.ClientPhoneNumber;
+                        customer.AmountOrders = 1;
+                        db.AllCustomers.Add(customer);
+                    }
+                    else
+                    {
+                        customer.AmountOrders++;
+                    }
+
+                    db.SaveChanges();
 
                     MessageBox.Show("Ваше замовлення прийнято! Зараз буде згенеровано чек з інформацією про замовлення!)");
 
@@ -127,7 +148,7 @@ namespace TopStoreApp.Pages
                 }
 
             }
-            
+
         }
 
         private void deleteProduct_Click(object sender, RoutedEventArgs e)
@@ -156,7 +177,7 @@ namespace TopStoreApp.Pages
                 await sw.WriteLineAsync(order.ToString());
             }
 
-            Process.Start("notepad.exe",userOrderTxt);
+            Process.Start("notepad.exe", userOrderTxt);
         }
     }
 }

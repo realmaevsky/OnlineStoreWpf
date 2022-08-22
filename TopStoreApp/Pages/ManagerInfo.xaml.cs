@@ -48,7 +48,9 @@ namespace TopStoreApp.Pages
 
         private void deleteManager_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Кнопка не працює...");
+            db.AllManagers.Remove((Manager)AllManagersDataGrid.SelectedItem);
+            db.SaveChanges();
+            MessageBox.Show("Користувач успішно видалений");
             RefreshBD();
         }
 

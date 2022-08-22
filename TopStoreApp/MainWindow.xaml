@@ -12,7 +12,7 @@
         Icon="Res/img/logo.png" AllowsTransparency ="True" Background="Transparent"
         WindowStyle ="None" ResizeMode="NoResize" FontFamily="Poppins">
 
-    <Border Background="{DynamicResource BackgroundGradient}"
+    <Border Background="{StaticResource BackgroundGradient}"
             CornerRadius="15">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
 
             <Border Grid.Column="0"
-                    Background="{DynamicResource SideMenuColor}"
+                    Background="{StaticResource SideMenuColor}"
                     CornerRadius="5">
                 <Grid x:Name="GridNav" Width="60">
                     <Grid.RowDefinitions>
@@ -30,97 +30,100 @@
                     </Grid.RowDefinitions>
                     
                     <StackPanel Grid.Row="1" Margin="-1,40,0,20">
-                        <Button x:Name="btnStartPage" Style="{DynamicResource PopupButtonStyle}" 
+                        <Button x:Name="btnStartPage" Style="{StaticResource PopupButtonStyle}" 
                                 MouseEnter="btnStartPage_MouseEnter" MouseLeave="btnStartPage_MouseLeave" 
                                 Click="btnStartPage_Click">
                             <ctls:MenuItem GroupName="MenuItem"
-                                           IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource home}" IconWidth="16" 
+                                           IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource home}" IconWidth="16" 
                                            Text="Головна сторінка" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="btnProducts" Style="{DynamicResource PopupButtonStyle}"
+                        <Button x:Name="btnProducts" Style="{StaticResource PopupButtonStyle}"
                                 MouseEnter="btnProducts_MouseEnter" MouseLeave="btnProducts_MouseLeave" 
                                 Click="btnProducts_Click">
                             <ctls:MenuItem GroupName="MenuItem" 
-                                           IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource products}" IconWidth="16" 
+                                           IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource products}" IconWidth="16" 
                                            Text="Товари" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="btnShoppingCart" Style="{DynamicResource PopupButtonStyle}"
+                        <Button x:Name="btnShoppingCart" Style="{StaticResource PopupButtonStyle}"
                                 MouseEnter="btnShoppingCart_MouseEnter" MouseLeave="btnShoppingCart_MouseLeave" 
                                 Click="btnShoppingCart_Click">
                             <ctls:MenuItem GroupName="MenuItem" 
-                                           IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource car}" IconWidth="16" 
+                                           IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource car}" IconWidth="16" 
                                            Text="Кошик" VerticalAlignment="Center"/>
                         </Button>
-                        <Label Content="_____________________________________" Width="62"/>
-                        <!--Особистий кабінет для користувача-->
-                        <Button x:Name="btnMyOrders" Style="{DynamicResource PopupButtonStyle}" 
+                        
+                        <Button x:Name="btnMyOrders" Style="{StaticResource PopupButtonStyle}" 
                                 MouseEnter="btnMyOrders_MouseEnter" MouseLeave="btnMyOrders_MouseLeave"
                                 Click="btnMyOrders_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource supplier}" IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource supplier}" IconWidth="16" 
                                            Text="Мої замовлення" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="btnMyProfile" Style="{DynamicResource PopupButtonStyle}"  
-                                MouseEnter="btnMyProfile_MouseEnter" MouseLeave="btnMyProfile_MouseLeave"
-                                Click="btnMyProfile_Click">
-                            <ctls:MenuItem GroupName="MenuItem"
-                                           IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource users}" IconWidth="16" 
-                                           Text="Мій профіль" VerticalAlignment="Center"/>
-                        </Button>
                         <Label Content="_____________________________________" Width="62"/>
+                        
                         <!--Admin Panel-->
-                        <Button Foreground="{DynamicResource adminColor}" x:Name="btnAllProducts" Style="{DynamicResource PopupButtonStyle}"  
+                        
+                        <Button Foreground="{StaticResource adminColor}" x:Name="btnAllProducts" Style="{StaticResource PopupButtonStyle}"  
                                 MouseEnter="btnAllProducts_MouseEnter" MouseLeave="btnAllProducts_MouseLeave"
                                 Click="btnAllProducts_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
-                                           Icon="{DynamicResource products}" Foreground="{DynamicResource adminColor}"  IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource adminColor}" 
+                                           Icon="{StaticResource products}" Foreground="{StaticResource adminColor}"  IconWidth="16" 
                                            Text="Всі товари" VerticalAlignment="Center"/>
                         </Button>
                         
-                        <Button x:Name="btnOrderList" Style="{DynamicResource PopupButtonStyle}"  
+                        <Button x:Name="btnOrderList" Style="{StaticResource PopupButtonStyle}"  
                                 MouseEnter="btnOrderList_MouseEnter" MouseLeave="btnOrderList_MouseLeave"
                                 Click="btnOrderList_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
-                                           Icon="{DynamicResource dashboard}" IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource adminColor}" 
+                                           Icon="{StaticResource dashboard}" IconWidth="16" 
                                            Text="Всі замовлення" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="btnManagersInfo" Style="{DynamicResource PopupButtonStyle}"  
+                        <Button x:Name="btnManagersInfo" Style="{StaticResource PopupButtonStyle}"  
                                 MouseEnter="btnManagersInfo_MouseEnter" MouseLeave="btnManagersInfo_MouseLeave"
                                 Click="btnManagersInfo_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
-                                           Icon="{DynamicResource billing}" IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource adminColor}" 
+                                           Icon="{StaticResource billing}" IconWidth="16" 
                                            Text="Всі менеджери" VerticalAlignment="Center"/>
                         </Button>
 
-                        <Button x:Name="btnAddUser" Style="{DynamicResource PopupButtonStyle}"  
+                        <Button x:Name="btnAllCustomers" Style="{StaticResource PopupButtonStyle}"  
+                                MouseEnter="btnAllCustomers_MouseEnter" MouseLeave="btnAllCustomers_MouseLeave"
+                                Click="btnAllCustomers_Click">
+                            <ctls:MenuItem GroupName="MenuItem"
+                                           IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource users}" IconWidth="16" 
+                                           Text="Всі замовники" VerticalAlignment="Center" Foreground="Red"/>
+                        </Button>
+
+                        <Button x:Name="btnAddUser" Style="{StaticResource PopupButtonStyle}"  
                                 MouseEnter="btnAddUser_MouseEnter" MouseLeave="btnAddUser_MouseLeave"
                                 Click="btnAddUser_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource adminColor}" 
-                                           Icon="{DynamicResource customers}" IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource adminColor}" 
+                                           Icon="{StaticResource customers}" IconWidth="16" 
                                            Text="Всі користувачі" VerticalAlignment="Center"/>
                         </Button>
 
                         <!--Other menu buttons-->
+                        
                         <Label Content="_____________________________________" Width="62"/>
-                        <Button x:Name="btnSetting" Style="{DynamicResource PopupButtonStyle}"  
+                        <Button x:Name="btnSetting" Style="{StaticResource PopupButtonStyle}"  
                                 MouseEnter="btnSetting_MouseEnter" MouseLeave="btnSetting_MouseLeave"
                                 Click="btnSetting_Click">
-                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{DynamicResource ThirdColor}" 
-                                           Icon="{DynamicResource settings}" IconWidth="16" 
+                            <ctls:MenuItem GroupName="MenuItem" IndicatorBrush="{StaticResource ThirdColor}" 
+                                           Icon="{StaticResource settings}" IconWidth="16" 
                                            Text="Налаштування" VerticalAlignment="Center"/>
                         </Button>
                     </StackPanel>
                     
                     <Popup x:Name="Popup"  AllowsTransparency="True"  HorizontalOffset="0" VerticalOffset="10">
-                        <ctls:UserPopup x:Name="Header" Foreground="{DynamicResource FirstTextColor}"/>
+                        <ctls:UserPopup x:Name="Header" Foreground="{StaticResource FirstTextColor}"/>
                     </Popup>
                 </Grid>
             </Border>
@@ -131,7 +134,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <ToggleButton x:Name="Tg_Btn" VerticalAlignment="Center" Style="{DynamicResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="-46,0,0,0" Height="30" Width="30">
+                <ToggleButton x:Name="Tg_Btn" VerticalAlignment="Center" Style="{StaticResource iToggleButtonStyle}" HorizontalAlignment="Left" BorderThickness="0" Background="Transparent" Margin="-46,0,0,0" Height="30" Width="30">
                     <ToggleButton.Triggers>
                         <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                             <BeginStoryboard>
