@@ -44,19 +44,19 @@ namespace TopStoreApp.Pages
             {
                 //ThemesController.SetTheme(ThemesController.ThemeTypes.Dark);
 
-                var uri = new Uri("Themes/DarkTheme.xaml", UriKind.Relative);
-                ResourceDictionary dark = Application.LoadComponent(uri) as ResourceDictionary;
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(dark);
+                //var uri = new Uri("Themes/DarkTheme.xaml", UriKind.Relative);
+                //ResourceDictionary dark = Application.LoadComponent(uri) as ResourceDictionary;
+                //Application.Current.Resources.MergedDictionaries.Clear();
+                //Application.Current.Resources.MergedDictionaries.Add(dark);
             }
             else
             {
                 //ThemesController.SetTheme(ThemesController.ThemeTypes.Light);
 
-                var uri = new Uri("Themes/LightTheme.xaml", UriKind.Relative);
-                ResourceDictionary resDict = Application.LoadComponent(uri) as ResourceDictionary;
-                Application.Current.Resources.MergedDictionaries.Clear();
-                Application.Current.Resources.MergedDictionaries.Add(resDict);
+                //var uri = new Uri("Themes/LightTheme.xaml", UriKind.Relative);
+                //ResourceDictionary resDict = Application.LoadComponent(uri) as ResourceDictionary;
+                //Application.Current.Resources.MergedDictionaries.Clear();
+                //Application.Current.Resources.MergedDictionaries.Add(resDict);
             }
         }
     }

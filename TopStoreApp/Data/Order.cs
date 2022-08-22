@@ -33,8 +33,15 @@ namespace TopStoreApp.Data
             }
             set
             {
-                totalPrice = ProductsInOrder.Sum(t => t.TotalCost);
-                //totalPrice = value;
+                if (ProductsInOrder.Count == 0)
+                {
+                    totalPrice = value;
+                }
+                else
+                {
+                    totalPrice = ProductsInOrder.Sum(t => t.TotalCost);
+                }
+
                 OnPropertyChanged();
             }
         }

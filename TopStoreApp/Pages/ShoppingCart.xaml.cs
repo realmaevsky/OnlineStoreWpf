@@ -1,29 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TopStoreApp.Data;
-using TopStoreApp.Pages;
-using System.Data.Entity;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
-using System.Threading;
-using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.Remoting.Messaging;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace TopStoreApp.Pages
 {
@@ -102,17 +85,6 @@ namespace TopStoreApp.Pages
                     tempOrder.ClientLastName = txtUserLastName.Text;
                     tempOrder.ClientPhoneNumber = txtUserPhone.Text;
 
-                    UserOrder.userOrders.Add(new Order()
-                    {
-                        Id = tempOrder.Id,
-                        ClientFirstName = tempOrder.ClientFirstName,
-                        ClientLastName = tempOrder.ClientLastName,
-                        ClientPhoneNumber = tempOrder.ClientPhoneNumber,
-                        ProductsInOrder = tempOrder.ProductsInOrder,
-                        TotalPrice = tempOrder.TotalPrice,
-                        PaymentMethod = tempOrder.PaymentMethod,
-                    });
-
                     db.AllOrders.Add(tempOrder);
 
                     var customer = db.AllCustomers.FirstOrDefault(x => x.PhoneNumber == tempOrder.ClientPhoneNumber);
@@ -132,6 +104,17 @@ namespace TopStoreApp.Pages
                     }
 
                     db.SaveChanges();
+
+                    UserOrder.userOrders.Add(new Order()
+                    {
+                        Id = tempOrder.Id,
+                        ClientFirstName = tempOrder.ClientFirstName,
+                        ClientLastName = tempOrder.ClientLastName,
+                        ClientPhoneNumber = tempOrder.ClientPhoneNumber,
+                        ProductsInOrder = tempOrder.ProductsInOrder,
+                        TotalPrice = tempOrder.TotalPrice,
+                        PaymentMethod = tempOrder.PaymentMethod,
+                    });
 
                     MessageBox.Show("Ваше замовлення прийнято! Зараз буде згенеровано чек з інформацією про замовлення!)");
 

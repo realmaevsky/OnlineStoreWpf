@@ -18,10 +18,9 @@ namespace TopStoreApp
         {
             db = new TopStoreDb();
 
+            new StartLoading().ShowDialog();
 
-            //new StartLoading().ShowDialog();
-
-            //new Authorization().ShowDialog();
+            new Authorization().ShowDialog();
 
             InitializeComponent();
 
